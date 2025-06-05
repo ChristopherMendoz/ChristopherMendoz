@@ -1,5 +1,5 @@
 # 💫 About Me:
-Entusiasta de la tecnología y de encontrar soluciones que hagan los procesos más eficientes. Disfruto trabajar en equipo, compartir ideas y siempre estoy dispuesto a aprender algo nuevo que me ayude a crecer y aportar más.<br>
+I'm passionate about technology and finding solutions that make processes more efficient. I enjoy working in teams, sharing ideas, and am always willing to learn something new that will help me grow and contribute more.<br>
 
 
 ## 🌐 Socials:
