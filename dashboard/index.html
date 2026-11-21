@@ -106,6 +106,7 @@
   .mini div { border:1px solid var(--line); border-radius:12px; padding:10px 12px; background:var(--bg); }
   .mini b { display:block; font-size:22px; line-height:1.15; }
   .mini span { color:var(--muted); font-size:12px; }
+  .share[hidden] { display:none; }
   .share { display:flex; height:14px; border-radius:99px; overflow:hidden; background:var(--l0); margin:0 0 6px; }
   .share i { height:100%; cursor:pointer; transition:opacity .15s, flex-grow .8s cubic-bezier(.2,.8,.2,1); flex-grow:0; }
   .share:hover i { opacity:.45; } .share i:hover { opacity:1; }
@@ -175,7 +176,7 @@
       <div class="card-head">
         <div><h2 data-i18n="rhythmTitle">Ritmo de trabajo</h2>
         <p class="sub" id="rhythmSub"></p></div>
-        <div class="seg" role="group" aria-label="Agrupar">
+        <div class="seg" role="group" aria-label="Agrupar" id="barSeg">
           <button type="button" data-mode="month" aria-pressed="true" data-i18n="byMonth">Por mes</button>
           <button type="button" data-mode="weekday" aria-pressed="false" data-i18n="byWeekday">Por día</button>
         </div>
@@ -242,6 +243,7 @@ const T = {
     commitsN:n=>`${n} commit${n===1?"":"s"}`, prsN:n=>`${n} PR${n===1?"":"s"}`, reviewsN:n=>`${n} revisi${n===1?"ón":"ones"}`, issuesN:n=>`${n} issue${n===1?"":"s"}`,
     period:(a,b)=>a===b?a:`${a} – ${b}`, ofTotal:p=>`${p}% de mis contribuciones en colaboración`,
     restricted:n=>`Además hay ${n} ${n===1?"contribución":"contribuciones"} en repositorios privados sin detalle.`, noCollabs:"No hay colaboraciones en esta categoría.",
+    restrictedOnly:n=>`${n} ${n===1?"contribución":"contribuciones"} en repositorios privados. El detalle de sus dueños aún no está disponible.`,
     months:["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"], days:["dom","lun","mar","mié","jue","vie","sáb"], locale:"es" },
   en: { subtitle:"Systems Engineering Student · GitHub activity", profile:"View profile",
     heatTitle:"Contributions in the last year", heatSub:"Hover a day to see details; click to highlight its month.",
@@ -260,6 +262,7 @@ const T = {
     commitsN:n=>`${n} commit${n===1?"":"s"}`, prsN:n=>`${n} PR${n===1?"":"s"}`, reviewsN:n=>`${n} review${n===1?"":"s"}`, issuesN:n=>`${n} issue${n===1?"":"s"}`,
     period:(a,b)=>a===b?a:`${a} – ${b}`, ofTotal:p=>`${p}% of my collaboration contributions`,
     restricted:n=>`Plus ${n} contribution${n===1?"":"s"} in private repositories without details.`, noCollabs:"No collaborations in this category.",
+    restrictedOnly:n=>`${n} contribution${n===1?"":"s"} in private repositories. Details about their owners are not available yet.`,
     months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"], days:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"], locale:"en" },
 };
 const store = { get:k=>{ try { return localStorage.getItem(k); } catch { return null; } },
@@ -387,15 +390,17 @@ function renderCollabs() { const C = data.collabs, L = T[lang], card = $("#colla
   if (!C || (!C.public.length && !C.private.length && !C.restricted)) { card.hidden = true; return; }
   card.hidden = false;
   $("#colSub").textContent = L.colSub(new Date(C.since + "T12:00:00").getFullYear());
-  $("#colSeg").hidden = !C.private.length;
   // Lista unificada: repositorios públicos y dueños de repositorios privados.
   const items = [...C.public.map(e => ({ ...e, kind:"public", key:e.full_name })),
                  ...C.private.map(e => ({ ...e, kind:"private", key:"priv:" + e.owner.login }))]
     .sort((a, b) => colTotal(b) - colTotal(a));
   items.forEach((e, i) => e.tone = PAL[i % PAL.length]);
-  const shown = items.filter(e => colFilter === "all" || e.kind === colFilter);
+  // Sin detalle de los privados (falta el token), el filtro muestra solo el total.
+  if (!C.private.length && C.restricted) items.push({ kind:"private", key:"priv:restricted", restricted:true,
+    owner:{ login:"", type:"user" }, repos:0, commits:0, prs:0, reviews:0, issues:0, tone:"var(--l1)" });
+  const shown = items.filter(e => colFilter === "all" ? !e.restricted : e.kind === colFilter);
   const sum = (k, list) => list.reduce((a, e) => a + e[k], 0);
-  const owners = new Set(shown.map(e => e.owner.login)).size;
+  const owners = new Set(shown.filter(e => !e.restricted).map(e => e.owner.login)).size;
   const repos = shown.reduce((a, e) => a + (e.kind === "private" ? e.repos : 1), 0);
   const k = [[repos, L.cRepos], [owners, L.cOwners], [sum("commits", shown), L.cCommits], [sum("prs", shown), L.cPRs],
              [sum("reviews", shown) + sum("issues", shown), L.cOther]];
@@ -406,12 +411,16 @@ function renderCollabs() { const C = data.collabs, L = T[lang], card = $("#colla
   const fmtM = d => d ? fmtDate(d, { month:"short", year:"numeric" }) : "";
   const name = e => e.kind === "public" ? e.full_name : e.owner.login;
   const share = $("#colShare"); share.setAttribute("aria-label", L.shareNote);
-  share.innerHTML = shown.map(e => `<i data-k="${escH(e.key)}" style="background:${e.tone}" data-g="${colTotal(e)}"></i>`).join("");
+  const visible = shown.filter(e => !e.restricted);
+  share.innerHTML = visible.map(e => `<i data-k="${escH(e.key)}" style="background:${e.tone}" data-g="${colTotal(e)}"></i>`).join("");
   requestAnimationFrame(() => share.querySelectorAll("i").forEach(i => i.style.flexGrow = i.dataset.g));
-  $("#colShareNote").textContent = (shown.length ? L.shareNote : "") +
-    (!C.includes_private && C.restricted && colFilter !== "public" ? " " + L.restricted(C.restricted) : "");
+  share.hidden = !visible.length;
+  $("#colShareNote").textContent = (visible.length ? L.shareNote : "") +
+    (!C.private.length && C.restricted && colFilter === "all" ? " " + L.restricted(C.restricted) : "");
 
-  $("#collabs").innerHTML = shown.length ? shown.map(e => { const raw = colTotal(e) / grand * 100, pct = raw > 0 && raw < 1 ? 0.5 : Math.round(raw);
+  $("#collabs").innerHTML = shown.length ? shown.map(e => { if (e.restricted) return `<div class="collab">
+      <div class="who"><div><b>🔒 ${L.privateBadge}</b><small>${L.restrictedOnly(C.restricted)}</small></div></div></div>`;
+    const raw = colTotal(e) / grand * 100, pct = raw > 0 && raw < 1 ? 0.5 : Math.round(raw);
     const chips = [e.commits && `<span class="c">${L.commitsN(e.commits)}</span>`, e.prs && `<span>${L.prsN(e.prs)}</span>`,
                    e.reviews && `<span>${L.reviewsN(e.reviews)}</span>`, e.issues && `<span>${L.issuesN(e.issues)}</span>`].filter(Boolean).join("");
     const pub = e.kind === "public";
@@ -447,8 +456,8 @@ $("#colSeg").querySelectorAll("button").forEach(b => b.onclick = () => { colFilt
 function renderAll() { applyLang(); renderKpis(); renderHeat(); renderBars(); renderLangs(); renderRepos(); renderCollabs();
   $("#foot").innerHTML = `${T[lang].updated(new Date(data.generated_at).toLocaleString(T[lang].locale, { dateStyle:"long", timeStyle:"short" }))} · <a href="https://github.com/ChristopherMendoz">github.com/ChristopherMendoz</a>`; }
 
-document.querySelectorAll(".seg button").forEach(b => b.onclick = () => { barMode = b.dataset.mode;
-  document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", x === b)); renderBars(); });
+document.querySelectorAll("#barSeg button").forEach(b => b.onclick = () => { barMode = b.dataset.mode;
+  document.querySelectorAll("#barSeg button").forEach(x => x.setAttribute("aria-pressed", x === b)); renderBars(); });
 $("#q").oninput = renderRepos; $("#sort").onchange = renderRepos;
 
 applyLang();

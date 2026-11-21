@@ -3,6 +3,3 @@
 # Las líneas que empiezan con # se ignoran.
 Hola, soy Christopher 👋
 Estudiante de Ingeniería en Sistemas
-Next.js · NestJS · Laravel
-Android nativo con Kotlin 📱
-Explorando Flutter 🚀

@@ -11,7 +11,6 @@
 ## <img src="./assets/icons/about.svg" width="30" align="center"> Sobre mí
 
 🎓 &nbsp;Estudiante de **Ingeniería en Sistemas** en la Universidad Nacional de Ingeniería (UNI), apasionado por la tecnología y el desarrollo de software.<br>
-💻 &nbsp;Trabajo con **Next.js**, **NestJS** y **Laravel**.<br>
 📱 &nbsp;Desarrollo aplicaciones **Android nativas con Kotlin** y exploro el desarrollo multiplataforma con **Flutter**.<br>
 🚀 &nbsp;Mi objetivo: ampliar continuamente mis conocimientos, fortalecer mis habilidades como ingeniero de software y crear soluciones tecnológicas innovadoras y escalables.
 
