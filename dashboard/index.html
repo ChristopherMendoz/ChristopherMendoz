@@ -186,7 +186,7 @@ const T = {
     langTitle:"Lenguajes", langSub:"Haz clic en un lenguaje para filtrar los repositorios.",
     reposTitle:"Repositorios públicos", search:"Buscar repositorio…", sortRecent:"Más recientes", sortStars:"Más estrellas", sortName:"Nombre",
     kContrib:"Contribuciones (último año)", kCommits:"Commits", kPRs:"Pull requests", kReviews:"Revisiones de PR", kStreak:"Racha actual (días)", kLongest:"Racha más larga (días)",
-    contribs:n=>`${n} contribución${n===1?"":"es"}`, rhythmMonth:"Contribuciones por mes. Pasa el cursor sobre una barra.", rhythmWeek:"Contribuciones por día de la semana.",
+    contribs:n=>`${n} ${n===1?"contribución":"contribuciones"}`, rhythmMonth:"Contribuciones por mes. Pasa el cursor sobre una barra.", rhythmWeek:"Contribuciones por día de la semana.",
     reposCount:(n,l)=>`${n} repositorio${n===1?"":"s"}${l?` con ${l}`:""}`, noRepos:"No hay repositorios que coincidan.", clear:"Quitar filtro",
     updated:d=>`Datos actualizados automáticamente el ${d}.`, error:"No se pudieron cargar los datos. Vuelve a intentarlo en unos minutos.",
     months:["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"], days:["dom","lun","mar","mié","jue","vie","sáb"], locale:"es" },
