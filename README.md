@@ -30,16 +30,16 @@
 <p align="center">
 <a href="https://christophermendoz.github.io/ChristopherMendoz/">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=ChristopherMendoz&show_icons=true&count_private=true&hide=stars%2Cissues&show=reviews%2Cprs_merged&hide_rank=true&card_width=467&custom_title=Estad%C3%ADsticas%20en%20GitHub&bg_color=1F1D2B&title_color=73B3B9&text_color=F2E6D6&icon_color=F0AB72&border_color=5C5579&border_radius=12">
-  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api?username=ChristopherMendoz&show_icons=true&count_private=true&hide=stars%2Cissues&show=reviews%2Cprs_merged&hide_rank=true&card_width=467&custom_title=Estad%C3%ADsticas%20en%20GitHub&bg_color=F2E6D6&title_color=1E89AB&text_color=5C5579&icon_color=E3566A&border_color=B1C8C2&border_radius=12">
-  <img alt="Estadísticas de GitHub de Christopher Mendoza" src="https://github-readme-stats.vercel.app/api?username=ChristopherMendoz&show_icons=true&count_private=true&hide=stars%2Cissues&show=reviews%2Cprs_merged&hide_rank=true&card_width=467&custom_title=Estad%C3%ADsticas%20en%20GitHub&bg_color=1F1D2B&title_color=73B3B9&text_color=F2E6D6&icon_color=F0AB72&border_color=5C5579&border_radius=12" width="49%">
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=ChristopherMendoz&show_icons=true&count_private=true&hide=stars%2Cissues&show=reviews%2Cprs_merged&hide_rank=true&locale=es&card_width=467&custom_title=Estad%C3%ADsticas%20en%20GitHub&bg_color=1F1D2B&title_color=73B3B9&text_color=F2E6D6&icon_color=F0AB72&border_color=5C5579&border_radius=12">
+  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api?username=ChristopherMendoz&show_icons=true&count_private=true&hide=stars%2Cissues&show=reviews%2Cprs_merged&hide_rank=true&locale=es&card_width=467&custom_title=Estad%C3%ADsticas%20en%20GitHub&bg_color=F2E6D6&title_color=1E89AB&text_color=5C5579&icon_color=E3566A&border_color=B1C8C2&border_radius=12">
+  <img alt="Estadísticas de GitHub de Christopher Mendoza" src="https://github-readme-stats.vercel.app/api?username=ChristopherMendoz&show_icons=true&count_private=true&hide=stars%2Cissues&show=reviews%2Cprs_merged&hide_rank=true&locale=es&card_width=467&custom_title=Estad%C3%ADsticas%20en%20GitHub&bg_color=1F1D2B&title_color=73B3B9&text_color=F2E6D6&icon_color=F0AB72&border_color=5C5579&border_radius=12" width="49%">
 </picture>
 </a>
 <a href="https://christophermendoz.github.io/ChristopherMendoz/">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=ChristopherMendoz&layout=compact&langs_count=7&card_width=467&custom_title=Lenguajes%20m%C3%A1s%20usados&bg_color=1F1D2B&title_color=73B3B9&text_color=F2E6D6&border_color=5C5579&border_radius=12">
-  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=ChristopherMendoz&layout=compact&langs_count=7&card_width=467&custom_title=Lenguajes%20m%C3%A1s%20usados&bg_color=F2E6D6&title_color=1E89AB&text_color=5C5579&border_color=B1C8C2&border_radius=12">
-  <img alt="Lenguajes más usados" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ChristopherMendoz&layout=compact&langs_count=7&card_width=467&custom_title=Lenguajes%20m%C3%A1s%20usados&bg_color=1F1D2B&title_color=73B3B9&text_color=F2E6D6&border_color=5C5579&border_radius=12" width="49%">
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=ChristopherMendoz&layout=compact&langs_count=7&locale=es&card_width=467&custom_title=Lenguajes%20m%C3%A1s%20usados&bg_color=1F1D2B&title_color=73B3B9&text_color=F2E6D6&border_color=5C5579&border_radius=12">
+  <source media="(prefers-color-scheme: light)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=ChristopherMendoz&layout=compact&langs_count=7&locale=es&card_width=467&custom_title=Lenguajes%20m%C3%A1s%20usados&bg_color=F2E6D6&title_color=1E89AB&text_color=5C5579&border_color=B1C8C2&border_radius=12">
+  <img alt="Lenguajes más usados" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ChristopherMendoz&layout=compact&langs_count=7&locale=es&card_width=467&custom_title=Lenguajes%20m%C3%A1s%20usados&bg_color=1F1D2B&title_color=73B3B9&text_color=F2E6D6&border_color=5C5579&border_radius=12" width="49%">
 </picture>
 </a>
 </p>
