@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="./assets/banner.svg" alt="Christopher Mendoza · Systems Engineering Student" width="100%">
+  <img src="./assets/banner.svg" alt="Christopher Mendoza · Estudiante de Ingeniería en Sistemas · Systems Engineering Student" width="100%">
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ChristopherMendoz/ChristopherMendoz/output/intro.svg" alt="Hola, soy Christopher · Hi, I'm Christopher" width="720">
+  <img src="https://raw.githubusercontent.com/ChristopherMendoz/ChristopherMendoz/output/intro.svg" alt="¡Bienvenidos! · Welcome!" width="720">
 </p>
 
 <p align="center"><img src="./assets/divider.svg" alt="" width="100%"></p>
@@ -11,7 +11,8 @@
 ## <img src="./assets/icons/about.svg" width="30" align="center"> Sobre mí
 
 🎓 &nbsp;Estudiante de **Ingeniería en Sistemas** en la Universidad Nacional de Ingeniería (UNI), apasionado por la tecnología y el desarrollo de software.<br>
-📱 &nbsp;Desarrollo aplicaciones **Android nativas con Kotlin** y exploro el desarrollo multiplataforma con **Flutter**.<br>
+💻 &nbsp;He trabajado en proyectos web con **Next.js**, **NestJS** y **Laravel**, y en aplicaciones **Android nativas con Kotlin**, entre otras tecnologías.<br>
+📱 &nbsp;Me adapto con facilidad a nuevas herramientas; actualmente estoy explorando el desarrollo multiplataforma con **Flutter**.<br>
 🚀 &nbsp;Mi objetivo: ampliar continuamente mis conocimientos, fortalecer mis habilidades como ingeniero de software y crear soluciones tecnológicas innovadoras y escalables.
 
 ## <img src="./assets/icons/stack.svg" width="30" align="center"> Tecnologías y herramientas

@@ -1,5 +1,6 @@
 # Frases de la animación del perfil, en español (una por línea).
 # La GitHub Action las traduce al inglés y regenera la animación sola.
 # Las líneas que empiezan con # se ignoran.
-Hola, soy Christopher 👋
-Estudiante de Ingeniería en Sistemas
+# Para fijar la traducción a mano: «frase en español | frase en inglés».
+# El nombre y la carrera se animan en el banner (scripts/banner.py).
+¡Bienvenidos! 👋 | Welcome! 👋

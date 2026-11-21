@@ -2,7 +2,7 @@
 
 Lee las frases en español de intro.txt, las traduce al inglés con la API
 gratuita de MyMemory y dibuja un SVG con efecto de escritura que alterna
-cada frase en español y en inglés. Solo usa la biblioteca estándar de Python.
+cada frase en español y en inglés, sin etiquetas de idioma. Solo usa la biblioteca estándar de Python.
 
 Uso:  python scripts/intro.py [archivo_entrada] [archivo_salida]
 """
@@ -78,8 +78,7 @@ def build(pairs: list[tuple[str, str]]) -> str:
     for i, ((lang, text), (start, dur)) in enumerate(zip(seq, spans)):
         cum = width_units(text)
         text_w = (cum[-1] if cum else 0) * CHAR_W
-        pill_w = 34
-        x0 = (W - (text_w + pill_w + 12)) / 2 + pill_w + 12
+        x0 = (W - text_w) / 2
         # fotogramas: (tiempo, ancho visible)
         frames = [(start, 0)]
         for k, c in enumerate(cum):
@@ -98,11 +97,10 @@ def build(pairs: list[tuple[str, str]]) -> str:
         widths = ";".join(f"{w:.1f}" for _, w in frames)
         xs = ";".join(f"{x0 + w + 2:.1f}" for _, w in frames)
 
-        # visibilidad de la etiqueta ES/EN y del cursor
+        # visibilidad del cursor
         vis_times = sorted({0.0, start / total, (start + dur - GAP) / total, 1.0})
         vis_vals = ["1" if start / total <= v < (start + dur - GAP) / total else "0" for v in vis_times]
         vt, vv = ";".join(f"{v:.5f}" for v in vis_times), ";".join(vis_vals)
-        pill_fill = CORAL if lang == "ES" else OCEAN
 
         parts.append(f'''
   <clipPath id="c{i}"><rect x="{x0:.1f}" y="0" height="{H}" width="0">
@@ -110,8 +108,6 @@ def build(pairs: list[tuple[str, str]]) -> str:
   </rect></clipPath>
   <g opacity="0">
     <animate attributeName="opacity" values="{vv}" keyTimes="{vt}" dur="{total:.2f}s" calcMode="discrete" repeatCount="indefinite"/>
-    <rect x="{x0 - pill_w - 12:.1f}" y="{H / 2 - 11}" width="{pill_w}" height="22" rx="11" fill="{pill_fill}"/>
-    <text x="{x0 - 12 - pill_w / 2:.1f}" y="{H / 2 + 4.5}" text-anchor="middle" class="pill">{lang}</text>
     <rect y="{H / 2 - 13}" width="3" height="26" fill="{TURQ}">
       <animate attributeName="x" values="{xs}" keyTimes="{key_times}" dur="{total:.2f}s" calcMode="discrete" repeatCount="indefinite"/>
       <animate attributeName="fill-opacity" values="1;0" dur="0.9s" calcMode="discrete" repeatCount="indefinite"/>
@@ -124,7 +120,6 @@ def build(pairs: list[tuple[str, str]]) -> str:
   <title>{html.escape(alt)}</title>
   <style>
     .t {{ font: 600 {FONT_SIZE}px 'Fira Code','JetBrains Mono',Consolas,'Courier New',monospace; fill: {CORAL}; }}
-    .pill {{ font: 700 12px 'Segoe UI',Ubuntu,Arial,sans-serif; fill: {CREAM}; letter-spacing: 1px; }}
   </style>{"".join(parts)}
 </svg>
 '''
@@ -132,7 +127,10 @@ def build(pairs: list[tuple[str, str]]) -> str:
 
 def main() -> None:
     lines = read_lines(SRC)
-    pairs = [(es, translate(es)) for es in lines]
+    pairs = []
+    for line in lines:
+        es, _, en = (part.strip() for part in line.partition("|"))
+        pairs.append((es, en or translate(es)))
     for es, en in pairs:
         print(f"ES: {es}\nEN: {en or '(sin traducción)'}")
     OUT.parent.mkdir(parents=True, exist_ok=True)
