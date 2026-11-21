@@ -26,7 +26,10 @@ jobs:
       - name: Descargar estadísticas para el panel interactivo
         run: python3 scripts/stats.py "${{ github.repository_owner }}" dist/stats.json
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Con el secreto PERFIL_TOKEN (token personal) se incluyen las colaboraciones en
+          # repositorios privados, mostrando solo al dueño. Sin él, solo las públicas.
+          GITHUB_TOKEN: ${{ secrets.PERFIL_TOKEN || secrets.GITHUB_TOKEN }}
+          PRIVATE_ACCESS: ${{ secrets.PERFIL_TOKEN != '' && '1' || '0' }}
 
       - name: Preparar el panel interactivo
         run: cp dashboard/index.html dist/index.html

@@ -102,6 +102,35 @@
   .dot { width:9px; height:9px; border-radius:50%; display:inline-block; margin-right:4px; }
   .empty { color:var(--muted); font-size:13px; padding:10px 0; }
 
+  .mini { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px; margin-bottom:14px; }
+  .mini div { border:1px solid var(--line); border-radius:12px; padding:10px 12px; background:var(--bg); }
+  .mini b { display:block; font-size:22px; line-height:1.15; }
+  .mini span { color:var(--muted); font-size:12px; }
+  .share { display:flex; height:14px; border-radius:99px; overflow:hidden; background:var(--l0); margin:0 0 6px; }
+  .share i { height:100%; cursor:pointer; transition:opacity .15s, flex-grow .8s cubic-bezier(.2,.8,.2,1); flex-grow:0; }
+  .share:hover i { opacity:.45; } .share i:hover { opacity:1; }
+  .share-note { color:var(--muted); font-size:12px; margin:0 0 14px; }
+  .collabs { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:10px; }
+  .collab { position:relative; display:flex; flex-direction:column; gap:8px; text-decoration:none; color:inherit;
+    border:1px solid var(--line); border-radius:14px; padding:14px; background:var(--bg);
+    transition:transform .15s, border-color .15s, box-shadow .15s; }
+  .collab:hover, .collab.hi { transform:translateY(-2px); border-color:var(--turq); box-shadow:var(--shadow); }
+  .collab .who { display:flex; gap:10px; align-items:center; min-width:0; }
+  .collab img { width:36px; height:36px; border-radius:50%; border:2px solid var(--cream); flex:none; background:var(--l0); }
+  .collab .who.org img { border-radius:9px; }
+  .collab .who div { min-width:0; }
+  .collab b { color:var(--ocean); font-size:14px; display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .collab small { color:var(--muted); font-size:12px; }
+  .collab p { margin:0; color:var(--muted); font-size:12.5px; }
+  .badge { margin-left:auto; flex:none; font-size:11px; padding:2px 8px; border-radius:999px; border:1px solid var(--line); color:var(--muted); }
+  .badge.lock { color:var(--coral); border-color:color-mix(in srgb, var(--coral) 45%, transparent); }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; }
+  .chips span { font-size:11.5px; padding:2px 8px; border-radius:999px; background:color-mix(in srgb, var(--turq) 16%, transparent); }
+  .chips span.c { background:color-mix(in srgb, var(--orange) 22%, transparent); }
+  .collab .track { height:5px; border-radius:99px; background:var(--l0); overflow:hidden; }
+  .collab .track i { display:block; height:100%; width:0; border-radius:99px; transition:width .9s cubic-bezier(.2,.8,.2,1); }
+  .collab .foot { margin-top:auto; display:flex; justify-content:space-between; gap:8px; font-size:11.5px; color:var(--muted); }
+
   #tip { position:fixed; pointer-events:none; z-index:10; background:var(--ink); color:var(--bg);
     padding:6px 10px; border-radius:8px; font-size:12.5px; opacity:0; transform:translateY(4px);
     transition:opacity .12s, transform .12s; white-space:nowrap; }
@@ -174,6 +203,22 @@
     <div class="repos" id="repos"></div>
   </div>
 
+  <div class="card fade" id="collabCard" hidden>
+    <div class="card-head">
+      <div><h2 data-i18n="colTitle">Colaboraciones</h2>
+      <p class="sub" id="colSub"></p></div>
+      <div class="seg" role="group" aria-label="Filtrar colaboraciones" id="colSeg">
+        <button type="button" data-v="all" aria-pressed="true" data-i18n="colAll">Todas</button>
+        <button type="button" data-v="public" aria-pressed="false" data-i18n="colPublic">Públicas</button>
+        <button type="button" data-v="private" aria-pressed="false" data-i18n="colPrivate">Privadas</button>
+      </div>
+    </div>
+    <div class="mini" id="colKpis"></div>
+    <div class="share" id="colShare" role="img"></div>
+    <p class="share-note" id="colShareNote"></p>
+    <div class="collabs" id="collabs"></div>
+  </div>
+
   <footer id="foot"></footer>
 </div>
 <div id="tip" role="tooltip"></div>
@@ -189,6 +234,14 @@ const T = {
     contribs:n=>`${n} ${n===1?"contribución":"contribuciones"}`, rhythmMonth:"Contribuciones por mes. Pasa el cursor sobre una barra.", rhythmWeek:"Contribuciones por día de la semana.",
     reposCount:(n,l)=>`${n} repositorio${n===1?"":"s"}${l?` con ${l}`:""}`, noRepos:"No hay repositorios que coincidan.", clear:"Quitar filtro",
     updated:d=>`Datos actualizados automáticamente el ${d}.`, error:"No se pudieron cargar los datos. Vuelve a intentarlo en unos minutos.",
+    colTitle:"Colaboraciones", colAll:"Todas", colPublic:"Públicas", colPrivate:"Privadas",
+    colSub:y=>`Repositorios de otras personas y organizaciones en los que he contribuido desde ${y}. Los privados muestran solo a su dueño.`,
+    cRepos:"Repositorios", cOwners:"Personas y organizaciones", cCommits:"Commits", cPRs:"Pull requests", cOther:"Revisiones e issues",
+    shareNote:"Reparto de contribuciones. Pasa el cursor por un tramo.", privateBadge:"Privado", publicBadge:"Público",
+    privRepos:n=>`${n} repositorio${n===1?"":"s"} privado${n===1?"":"s"}`, org:"Organización", person:"Persona",
+    commitsN:n=>`${n} commit${n===1?"":"s"}`, prsN:n=>`${n} PR${n===1?"":"s"}`, reviewsN:n=>`${n} revisi${n===1?"ón":"ones"}`, issuesN:n=>`${n} issue${n===1?"":"s"}`,
+    period:(a,b)=>a===b?a:`${a} – ${b}`, ofTotal:p=>`${p}% de mis contribuciones en colaboración`,
+    restricted:n=>`Además hay ${n} ${n===1?"contribución":"contribuciones"} en repositorios privados sin detalle.`, noCollabs:"No hay colaboraciones en esta categoría.",
     months:["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"], days:["dom","lun","mar","mié","jue","vie","sáb"], locale:"es" },
   en: { subtitle:"Systems Engineering Student · GitHub activity", profile:"View profile",
     heatTitle:"Contributions in the last year", heatSub:"Hover a day to see details; click to highlight its month.",
@@ -199,6 +252,14 @@ const T = {
     contribs:n=>`${n} contribution${n===1?"":"s"}`, rhythmMonth:"Contributions per month. Hover a bar.", rhythmWeek:"Contributions per weekday.",
     reposCount:(n,l)=>`${n} repositor${n===1?"y":"ies"}${l?` using ${l}`:""}`, noRepos:"No repositories match.", clear:"Clear filter",
     updated:d=>`Data refreshed automatically on ${d}.`, error:"Data could not be loaded. Please try again in a few minutes.",
+    colTitle:"Collaborations", colAll:"All", colPublic:"Public", colPrivate:"Private",
+    colSub:y=>`Repositories owned by other people and organizations that I have contributed to since ${y}. Private ones show only their owner.`,
+    cRepos:"Repositories", cOwners:"People and organizations", cCommits:"Commits", cPRs:"Pull requests", cOther:"Reviews and issues",
+    shareNote:"Share of contributions. Hover a segment.", privateBadge:"Private", publicBadge:"Public",
+    privRepos:n=>`${n} private repositor${n===1?"y":"ies"}`, org:"Organization", person:"Person",
+    commitsN:n=>`${n} commit${n===1?"":"s"}`, prsN:n=>`${n} PR${n===1?"":"s"}`, reviewsN:n=>`${n} review${n===1?"":"s"}`, issuesN:n=>`${n} issue${n===1?"":"s"}`,
+    period:(a,b)=>a===b?a:`${a} – ${b}`, ofTotal:p=>`${p}% of my collaboration contributions`,
+    restricted:n=>`Plus ${n} contribution${n===1?"":"s"} in private repositories without details.`, noCollabs:"No collaborations in this category.",
     months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"], days:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"], locale:"en" },
 };
 const store = { get:k=>{ try { return localStorage.getItem(k); } catch { return null; } },
@@ -318,7 +379,72 @@ function renderRepos() { const L = T[lang], q = $("#q").value.trim().toLowerCase
       <span>★ ${r.stars}</span><span>${fmtDate(r.pushed.slice(0, 10), { day:"numeric", month:"short", year:"numeric" })}</span></div></a>`).join("")
     : `<div class="empty">${L.noRepos}</div>`; }
 
-function renderAll() { applyLang(); renderKpis(); renderHeat(); renderBars(); renderLangs(); renderRepos();
+let colFilter = "all";
+const escH = s => String(s ?? "").replace(/[&<>"']/g, ch => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[ch]));
+const colTotal = e => e.commits + e.prs + e.reviews + e.issues;
+const PAL = ["var(--ocean)","var(--coral)","var(--turq)","var(--orange)","var(--indigo)","var(--sage)","var(--gold)"];
+function renderCollabs() { const C = data.collabs, L = T[lang], card = $("#collabCard");
+  if (!C || (!C.public.length && !C.private.length && !C.restricted)) { card.hidden = true; return; }
+  card.hidden = false;
+  $("#colSub").textContent = L.colSub(new Date(C.since + "T12:00:00").getFullYear());
+  $("#colSeg").hidden = !C.private.length;
+  // Lista unificada: repositorios públicos y dueños de repositorios privados.
+  const items = [...C.public.map(e => ({ ...e, kind:"public", key:e.full_name })),
+                 ...C.private.map(e => ({ ...e, kind:"private", key:"priv:" + e.owner.login }))]
+    .sort((a, b) => colTotal(b) - colTotal(a));
+  items.forEach((e, i) => e.tone = PAL[i % PAL.length]);
+  const shown = items.filter(e => colFilter === "all" || e.kind === colFilter);
+  const sum = (k, list) => list.reduce((a, e) => a + e[k], 0);
+  const owners = new Set(shown.map(e => e.owner.login)).size;
+  const repos = shown.reduce((a, e) => a + (e.kind === "private" ? e.repos : 1), 0);
+  const k = [[repos, L.cRepos], [owners, L.cOwners], [sum("commits", shown), L.cCommits], [sum("prs", shown), L.cPRs],
+             [sum("reviews", shown) + sum("issues", shown), L.cOther]];
+  $("#colKpis").innerHTML = k.map(([, l]) => `<div><b class="mono">0</b><span>${l}</span></div>`).join("");
+  [...$("#colKpis").querySelectorAll("b")].forEach((b, i) => countUp(b, k[i][0]));
+
+  const grand = Math.max(1, shown.reduce((a, e) => a + colTotal(e), 0));
+  const fmtM = d => d ? fmtDate(d, { month:"short", year:"numeric" }) : "";
+  const name = e => e.kind === "public" ? e.full_name : e.owner.login;
+  const share = $("#colShare"); share.setAttribute("aria-label", L.shareNote);
+  share.innerHTML = shown.map(e => `<i data-k="${escH(e.key)}" style="background:${e.tone}" data-g="${colTotal(e)}"></i>`).join("");
+  requestAnimationFrame(() => share.querySelectorAll("i").forEach(i => i.style.flexGrow = i.dataset.g));
+  $("#colShareNote").textContent = (shown.length ? L.shareNote : "") +
+    (!C.includes_private && C.restricted && colFilter !== "public" ? " " + L.restricted(C.restricted) : "");
+
+  $("#collabs").innerHTML = shown.length ? shown.map(e => { const raw = colTotal(e) / grand * 100, pct = raw > 0 && raw < 1 ? 0.5 : Math.round(raw);
+    const chips = [e.commits && `<span class="c">${L.commitsN(e.commits)}</span>`, e.prs && `<span>${L.prsN(e.prs)}</span>`,
+                   e.reviews && `<span>${L.reviewsN(e.reviews)}</span>`, e.issues && `<span>${L.issuesN(e.issues)}</span>`].filter(Boolean).join("");
+    const pub = e.kind === "public";
+    return `<a class="collab" data-k="${escH(e.key)}" href="${escH(pub ? e.url : e.owner.url)}">
+      <div class="who ${e.owner.type === "org" ? "org" : ""}">
+        <img src="${escH(e.owner.avatar + (e.owner.avatar.includes("?") ? "&" : "?") + "s=72")}" alt="" loading="lazy">
+        <div><b>${escH(pub ? e.name : e.owner.login)}</b>
+          <small>${pub ? escH(e.owner.login) : (e.owner.type === "org" ? L.org : L.person) + " · " + L.privRepos(e.repos)}</small></div>
+        <span class="badge ${pub ? "" : "lock"}">${pub ? L.publicBadge : "🔒 " + L.privateBadge}</span>
+      </div>
+      ${pub && e.description ? `<p>${escH(e.description)}</p>` : ""}
+      <div class="chips">${chips}</div>
+      <div class="track"><i style="background:${e.tone}" data-w="${pct}"></i></div>
+      <div class="foot"><span>${pub && e.language ? `<span class="dot" style="background:${escH(e.color || "var(--turq)")}"></span>${escH(e.language)} · ` : ""}${L.period(fmtM(e.first), fmtM(e.last))}</span>
+        <span class="mono">${pct < 1 ? "<1" : pct}%</span></div></a>`; }).join("")
+    : `<div class="empty">${L.noCollabs}</div>`;
+  requestAnimationFrame(() => $("#collabs").querySelectorAll(".track i").forEach(i => i.style.width = i.dataset.w + "%"));
+
+  // Interacción entre la barra de reparto y las tarjetas.
+  const byKey = new Map(shown.map(e => [e.key, e]));
+  share.querySelectorAll("i").forEach(seg => { const e = byKey.get(seg.dataset.k), c = $(`.collab[data-k="${CSS.escape(seg.dataset.k)}"]`);
+    seg.addEventListener("mousemove", ev => { c?.classList.add("hi");
+      showTip(ev, `<b>${escH(name(e))}</b><br>${L.ofTotal(Math.round(colTotal(e) / grand * 100))}`); });
+    seg.addEventListener("mouseleave", () => { c?.classList.remove("hi"); hideTip(); });
+    seg.addEventListener("click", () => c?.scrollIntoView({ behavior:"smooth", block:"nearest" })); });
+  $("#collabs").querySelectorAll(".collab").forEach(c => { const seg = share.querySelector(`i[data-k="${CSS.escape(c.dataset.k)}"]`);
+    c.addEventListener("mouseenter", () => { share.querySelectorAll("i").forEach(i => i.style.opacity = i === seg ? 1 : .35); });
+    c.addEventListener("mouseleave", () => share.querySelectorAll("i").forEach(i => i.style.opacity = "")); });
+}
+$("#colSeg").querySelectorAll("button").forEach(b => b.onclick = () => { colFilter = b.dataset.v;
+  $("#colSeg").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b)); renderCollabs(); });
+
+function renderAll() { applyLang(); renderKpis(); renderHeat(); renderBars(); renderLangs(); renderRepos(); renderCollabs();
   $("#foot").innerHTML = `${T[lang].updated(new Date(data.generated_at).toLocaleString(T[lang].locale, { dateStyle:"long", timeStyle:"short" }))} · <a href="https://github.com/ChristopherMendoz">github.com/ChristopherMendoz</a>`; }
 
 document.querySelectorAll(".seg button").forEach(b => b.onclick = () => { barMode = b.dataset.mode;
