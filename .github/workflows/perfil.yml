@@ -1,0 +1,50 @@
+name: Actualizar perfil
+
+# Regenera la animación bilingüe (desde intro.txt), la serpiente de contribuciones y los datos
+# del panel interactivo. Todo se publica en la rama "output" (que también sirve GitHub Pages);
+# la rama main no recibe commits automáticos.
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 */12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Traducir y generar la animación bilingüe
+        run: python3 scripts/intro.py intro.txt dist/intro.svg
+
+      - name: Descargar estadísticas para el panel interactivo
+        run: python3 scripts/stats.py "${{ github.repository_owner }}" dist/stats.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Preparar el panel interactivo
+        run: cp dashboard/index.html dist/index.html
+
+      - name: Generar la serpiente con la paleta del perfil
+        uses: Platane/snk@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/snake-light.svg?color_snake=#E3566A&color_dots=#EBE1D3,#B1C8C2,#73B3B9,#1E89AB,#5C5579
+            dist/snake-dark.svg?color_snake=#E3566A&color_dots=#2A2740,#5C5579,#1E89AB,#73B3B9,#F0AB72
+
+      - name: Publicar en la rama output
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: output
+          build_dir: dist
+          commit_message: "Actualiza animaciones y estadísticas del perfil"
+          jekyll: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
