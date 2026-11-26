@@ -8,6 +8,10 @@ y se agrupan los repositorios de otras personas u organizaciones.
   - Repositorio público: se guarda su nombre, enlace y estadísticas.
   - Repositorio privado: NUNCA se guarda su nombre ni su descripción; solo el
     perfil del dueño, cuántos repositorios privados suyos hay y los totales.
+Como GitHub no cuenta como "contribución" todos los commits (p. ej. si no eres
+colaborador ni has dado estrella o hecho fork del repositorio, o si el commit vive en
+tu fork), además se usa la API de búsqueda (commits, PRs e issues de tu autoría) y se
+combinan ambas fuentes: así aparece cualquier repositorio aunque tenga un solo commit.
 Con el GITHUB_TOKEN de la Action solo se ven los repositorios públicos. Para
 incluir los privados hay que guardar un token personal (classic, permisos
 "repo" y "read:org") como secreto PERFIL_TOKEN.
@@ -17,6 +21,8 @@ Uso:  GITHUB_TOKEN=... python scripts/stats.py <usuario> [archivo_salida]
 import json
 import os
 import sys
+import time
+import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -56,18 +62,39 @@ query($login: String!) {
 """
 
 
-def graphql(query: str, variables: dict) -> dict:
+HEADERS = {"Authorization": f"Bearer {os.environ.get('GITHUB_TOKEN', '')}",
+           "User-Agent": "profile-stats"}
+
+
+def graphql(query: str, variables: dict, partial: bool = False) -> dict:
     req = urllib.request.Request(
         "https://api.github.com/graphql",
         data=json.dumps({"query": query, "variables": variables}).encode(),
-        headers={"Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}",
-                 "Content-Type": "application/json",
-                 "User-Agent": "profile-stats"})
+        headers={**HEADERS, "Content-Type": "application/json"})
     with urllib.request.urlopen(req, timeout=30) as r:
         data = json.load(r)
-    if data.get("errors"):
+    if data.get("errors") and not (partial and data.get("data")):
         raise SystemExit(f"Error de GraphQL: {data['errors']}")
     return data["data"]
+
+
+def rest(path: str) -> dict:
+    req = urllib.request.Request(f"https://api.github.com/{path}",
+                                 headers={**HEADERS, "Accept": "application/vnd.github+json"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return json.load(r)
+
+
+def search_all(kind: str, q: str) -> list:
+    """Todos los resultados de una búsqueda (máx. 1000, límite de GitHub)."""
+    items = []
+    for page in range(1, 11):
+        res = rest(f"search/{kind}?q={urllib.parse.quote(q)}&per_page=100&page={page}")
+        items += res.get("items", [])
+        if len(items) >= res.get("total_count", 0) or not res.get("items"):
+            break
+        time.sleep(2)  # la búsqueda permite ~30 peticiones por minuto
+    return items
 
 
 COLLAB_QUERY = """
@@ -109,6 +136,53 @@ def periods(start: datetime, end: datetime):
         a = b
 
 
+REPO_FRAGMENT = COLLAB_QUERY[COLLAB_QUERY.index("fragment repo"):]
+
+
+def add_from_search(login: str, repos: dict) -> None:
+    """Completa `repos` con lo que encuentra la búsqueda de GitHub. Por repositorio se
+    queda con el mayor conteo de cada fuente, para no contar dos veces lo mismo."""
+    found: dict[str, dict] = {}
+    try:
+        for c in search_all("commits", f"author:{login}"):
+            f = found.setdefault(c["repository"]["full_name"], {"commits": 0, "prs": 0, "issues": 0, "dates": []})
+            f["commits"] += 1
+            f["dates"].append(c["commit"]["author"]["date"][:10])
+        for kind, q in (("prs", f"author:{login} type:pr"), ("issues", f"author:{login} type:issue")):
+            for i in search_all("issues", q):
+                name = i["repository_url"].split("/repos/", 1)[1]
+                f = found.setdefault(name, {"commits": 0, "prs": 0, "issues": 0, "dates": []})
+                f[kind] += 1
+                f["dates"].append(i["created_at"][:10])
+    except Exception as err:  # la búsqueda es un complemento: si falla, seguimos sin ella
+        print(f"Aviso: no se pudo usar la búsqueda de GitHub ({err})")
+        return
+
+    found = {n: f for n, f in found.items() if n.split("/")[0].lower() != login.lower()}
+    missing = [n for n in found if n not in repos]
+    for i in range(0, len(missing), 50):  # datos completos de los repositorios nuevos
+        chunk = missing[i:i + 50]
+        fields = "\n".join(f'r{j}: repository(owner: {json.dumps(n.split("/")[0])}, '
+                           f'name: {json.dumps(n.split("/")[1])}) {{ ...repo }}'
+                           for j, n in enumerate(chunk))
+        data = graphql(f"query {{ {fields} }}\n{REPO_FRAGMENT}", {}, partial=True)
+        for j, n in enumerate(chunk):
+            r = data.get(f"r{j}")
+            if r:
+                repos[n] = {"repo": r, "commits": 0, "prs": 0, "reviews": 0, "issues": 0,
+                            "first": None, "last": None}
+
+    for n, f in found.items():
+        e = repos.get(n)
+        if not e:
+            continue  # sin acceso a sus datos (borrado o privado)
+        for k in ("commits", "prs", "issues"):
+            e[k] = max(e[k], f[k])
+        if f["dates"]:
+            e["first"] = min(e["first"] or min(f["dates"]), min(f["dates"]))
+            e["last"] = max(e["last"] or max(f["dates"]), max(f["dates"]))
+
+
 def collaborations(login: str, created: str) -> dict:
     start = datetime.fromisoformat(created.replace("Z", "+00:00"))
     now = datetime.now(timezone.utc)
@@ -139,6 +213,8 @@ def collaborations(login: str, created: str) -> dict:
                         e["last"] = max(e["last"] or d, d)
                 else:
                     e[kind] += item["contributions"]["totalCount"]
+
+    add_from_search(login, repos)
 
     public, owners = [], {}
     for e in repos.values():
