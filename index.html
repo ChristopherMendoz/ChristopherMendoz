@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Christopher Mendoza · Actividad en GitHub</title>
+<meta name="description" content="Panel interactivo con la actividad de Christopher Mendoza en GitHub.">
+<style>
+  :root {
+    --turq:#73B3B9; --ocean:#1E89AB; --coral:#E3566A; --orange:#F0AB72; --gold:#F3B981;
+    --cream:#F2E6D6; --indigo:#5C5579; --sage:#B1C8C2;
+    --bg:#F7F0E6; --panel:#FFFBF5; --ink:#3B3552; --muted:#7A7391; --line:#E6D9C7;
+    --l0:#EBE1D3; --l1:#B1C8C2; --l2:#73B3B9; --l3:#1E89AB; --l4:#5C5579;
+    --shadow:0 1px 2px rgba(59,53,82,.06),0 8px 24px rgba(59,53,82,.06);
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+    --bg:#15131F; --panel:#1F1D2B; --ink:#F2E6D6; --muted:#A8A2BD; --line:#2F2B42;
+    --l0:#2A2740; --l1:#5C5579; --l2:#1E89AB; --l3:#73B3B9; --l4:#F0AB72; --shadow:none; } }
+  :root[data-theme="dark"] {
+    --bg:#15131F; --panel:#1F1D2B; --ink:#F2E6D6; --muted:#A8A2BD; --line:#2F2B42;
+    --l0:#2A2740; --l1:#5C5579; --l2:#1E89AB; --l3:#73B3B9; --l4:#F0AB72; --shadow:none; }
+
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font:15px/1.5 "Segoe UI", system-ui, -apple-system, Ubuntu, sans-serif; }
+  .wrap { max-width:1120px; margin:0 auto; padding:28px 20px 48px; }
+  .mono { font-family:"Fira Code","JetBrains Mono",Consolas,monospace; }
+  a { color:var(--ocean); }
+
+  header.hero { position:relative; overflow:hidden; border-radius:20px; padding:30px 32px;
+    background:var(--panel); border:1px solid var(--line); box-shadow:var(--shadow); }
+  .hero::before { content:""; position:absolute; inset:-40% -10% -40% 45%;
+    background: radial-gradient(closest-side at 30% 40%, rgba(240,171,114,.55), transparent),
+                radial-gradient(closest-side at 70% 30%, rgba(115,179,185,.65), transparent),
+                radial-gradient(closest-side at 55% 75%, rgba(227,86,106,.45), transparent),
+                radial-gradient(closest-side at 90% 70%, rgba(30,137,171,.6), transparent);
+    filter:blur(18px); animation:drift 18s ease-in-out infinite alternate; pointer-events:none; }
+  @keyframes drift { to { transform:translate(-30px,12px) scale(1.05); } }
+  .hero-row { position:relative; display:flex; gap:20px; align-items:center; flex-wrap:wrap; }
+  .hero img { width:72px; height:72px; border-radius:50%; border:3px solid var(--cream); }
+  .hero h1 { margin:0; font-size:30px; letter-spacing:-.5px; }
+  .hero p { margin:2px 0 0; color:var(--muted); }
+  .hero .prompt { color:var(--ocean); font-size:13px; }
+  .toolbar { position:relative; margin-left:auto; display:flex; gap:8px; flex-wrap:wrap; }
+  .btn { appearance:none; border:1px solid var(--line); background:var(--panel); color:var(--ink);
+    border-radius:999px; padding:7px 14px; font:inherit; font-size:13px; cursor:pointer;
+    text-decoration:none; display:inline-flex; align-items:center; gap:6px; transition:transform .15s, border-color .15s; }
+  .btn:hover { transform:translateY(-1px); border-color:var(--turq); }
+  .btn:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--coral); outline-offset:2px; }
+  .btn.primary { background:linear-gradient(135deg,var(--ocean),var(--indigo)); color:var(--cream); border:none; }
+
+  .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin:18px 0; }
+  .kpi { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:14px 16px;
+    box-shadow:var(--shadow); }
+  .kpi b { display:block; font-size:28px; line-height:1.1; color:var(--ink); }
+  .kpi span { color:var(--muted); font-size:12.5px; }
+  .kpi i { display:block; width:28px; height:3px; border-radius:2px; margin-bottom:10px; }
+
+  .grid { display:grid; grid-template-columns:1.6fr 1fr; gap:14px; }
+  @media (max-width:860px) { .grid { grid-template-columns:1fr; } }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:18px 20px;
+    box-shadow:var(--shadow); margin-bottom:14px; min-width:0; }
+  .card h2 { margin:0 0 4px; font-size:16px; }
+  .card .sub { margin:0 0 14px; color:var(--muted); font-size:13px; }
+  .card-head { display:flex; align-items:flex-start; gap:10px; flex-wrap:wrap; }
+  .seg { margin-left:auto; display:inline-flex; border:1px solid var(--line); border-radius:999px; padding:2px; }
+  .seg button { border:0; background:none; color:var(--muted); font:inherit; font-size:12.5px;
+    padding:5px 11px; border-radius:999px; cursor:pointer; }
+  .seg button[aria-pressed="true"] { background:var(--ocean); color:var(--cream); }
+
+  .heat-scroll { overflow-x:auto; padding-bottom:4px; }
+  svg text { fill:var(--muted); font-size:10px; }
+  .cell { stroke:var(--panel); stroke-width:2; transition:opacity .15s; cursor:pointer; }
+  .heat:hover .cell { opacity:.45; } .heat .cell:hover, .heat .cell.on { opacity:1; stroke:var(--coral); }
+  .legend { display:flex; align-items:center; gap:4px; justify-content:flex-end; color:var(--muted); font-size:12px; margin-top:6px; }
+  .legend i { width:11px; height:11px; border-radius:3px; display:inline-block; }
+
+  .bar { cursor:pointer; transition:opacity .15s, filter .15s; }
+  .bar.grow { transform-box:fill-box; transform-origin:bottom; animation:grow .7s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes grow { from { transform:scaleY(0); } }
+  .bars:hover .bar { opacity:.5; } .bars .bar:hover, .bars .bar:focus { opacity:1; filter:brightness(1.08); }
+
+  .lang-row { display:grid; grid-template-columns:110px 1fr 46px; align-items:center; gap:10px;
+    padding:6px 8px; border-radius:10px; cursor:pointer; border:1px solid transparent; }
+  .lang-row:hover { background:color-mix(in srgb, var(--turq) 12%, transparent); }
+  .lang-row[aria-pressed="true"] { border-color:var(--coral); background:color-mix(in srgb, var(--coral) 10%, transparent); }
+  .lang-track { height:9px; background:var(--l0); border-radius:99px; overflow:hidden; }
+  .lang-fill { height:100%; border-radius:99px; width:0; transition:width .9s cubic-bezier(.2,.8,.2,1); }
+  .lang-row small { color:var(--muted); text-align:right; }
+
+  .filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+  .filters input, .filters select { font:inherit; font-size:13px; color:var(--ink); background:var(--bg);
+    border:1px solid var(--line); border-radius:10px; padding:7px 10px; }
+  .filters input { flex:1; min-width:180px; }
+  .repos { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:10px; }
+  .repo { display:block; text-decoration:none; color:inherit; border:1px solid var(--line); border-radius:12px;
+    padding:12px 14px; background:var(--bg); transition:transform .15s, border-color .15s; }
+  .repo:hover { transform:translateY(-2px); border-color:var(--turq); }
+  .repo b { color:var(--ocean); font-size:14px; word-break:break-word; }
+  .repo p { margin:4px 0 8px; color:var(--muted); font-size:12.5px; min-height:18px; }
+  .repo .meta { display:flex; gap:12px; font-size:12px; color:var(--muted); align-items:center; }
+  .dot { width:9px; height:9px; border-radius:50%; display:inline-block; margin-right:4px; }
+  .empty { color:var(--muted); font-size:13px; padding:10px 0; }
+
+  .mini { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px; margin-bottom:14px; }
+  .mini div { border:1px solid var(--line); border-radius:12px; padding:10px 12px; background:var(--bg); }
+  .mini b { display:block; font-size:22px; line-height:1.15; }
+  .mini span { color:var(--muted); font-size:12px; }
+  .share[hidden] { display:none; }
+  .share { display:flex; height:14px; border-radius:99px; overflow:hidden; background:var(--l0); margin:0 0 6px; }
+  .share i { height:100%; cursor:pointer; transition:opacity .15s, flex-grow .8s cubic-bezier(.2,.8,.2,1); flex-grow:0; }
+  .share:hover i { opacity:.45; } .share i:hover { opacity:1; }
+  .share-note { color:var(--muted); font-size:12px; margin:0 0 14px; }
+  .collabs { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:10px; }
+  .collab { position:relative; display:flex; flex-direction:column; gap:8px; text-decoration:none; color:inherit;
+    border:1px solid var(--line); border-radius:14px; padding:14px; background:var(--bg);
+    transition:transform .15s, border-color .15s, box-shadow .15s; }
+  .collab:hover, .collab.hi { transform:translateY(-2px); border-color:var(--turq); box-shadow:var(--shadow); }
+  .collab .who { display:flex; gap:10px; align-items:center; min-width:0; }
+  .collab img { width:36px; height:36px; border-radius:50%; border:2px solid var(--cream); flex:none; background:var(--l0); }
+  .collab .who.org img { border-radius:9px; }
+  .collab .who div { min-width:0; }
+  .collab b { color:var(--ocean); font-size:14px; display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .collab small { color:var(--muted); font-size:12px; }
+  .collab p { margin:0; color:var(--muted); font-size:12.5px; }
+  .badge { margin-left:auto; flex:none; font-size:11px; padding:2px 8px; border-radius:999px; border:1px solid var(--line); color:var(--muted); }
+  .badge.lock { color:var(--coral); border-color:color-mix(in srgb, var(--coral) 45%, transparent); }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; }
+  .chips span { font-size:11.5px; padding:2px 8px; border-radius:999px; background:color-mix(in srgb, var(--turq) 16%, transparent); }
+  .chips span.c { background:color-mix(in srgb, var(--orange) 22%, transparent); }
+  .collab .track { height:5px; border-radius:99px; background:var(--l0); overflow:hidden; }
+  .collab .track i { display:block; height:100%; width:0; border-radius:99px; transition:width .9s cubic-bezier(.2,.8,.2,1); }
+  .collab .foot { margin-top:auto; display:flex; justify-content:space-between; gap:8px; font-size:11.5px; color:var(--muted); }
+
+  #tip { position:fixed; pointer-events:none; z-index:10; background:var(--ink); color:var(--bg);
+    padding:6px 10px; border-radius:8px; font-size:12.5px; opacity:0; transform:translateY(4px);
+    transition:opacity .12s, transform .12s; white-space:nowrap; }
+  #tip.show { opacity:1; transform:none; }
+  footer { color:var(--muted); font-size:12.5px; text-align:center; margin-top:18px; }
+  .fade { animation:fadeUp .6s ease both; }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(8px); } }
+  @media (prefers-reduced-motion: reduce) { *, .hero::before { animation:none !important; transition:none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero fade">
+    <div class="hero-row">
+      <img id="avatar" alt="" src="https://github.com/ChristopherMendoz.png?size=144">
+      <div>
+        <div class="prompt mono">$ git log --author="Christopher"</div>
+        <h1 id="name">Christopher Mendoza</h1>
+        <p data-i18n="subtitle">Estudiante de Ingeniería en Sistemas · actividad en GitHub</p>
+      </div>
+      <div class="toolbar">
+        <button class="btn" id="langBtn" type="button" aria-label="Cambiar idioma">EN</button>
+        <button class="btn" id="themeBtn" type="button" aria-label="Cambiar tema">☀</button>
+        <a class="btn primary" href="https://github.com/ChristopherMendoz" data-i18n="profile">Ver perfil</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="kpis" id="kpis" aria-label="Resumen"></section>
+
+  <div class="card fade">
+    <div class="card-head">
+      <div><h2 data-i18n="heatTitle">Contribuciones del último año</h2>
+      <p class="sub" data-i18n="heatSub">Pasa el cursor por un día para ver el detalle; haz clic para resaltar su mes.</p></div>
+    </div>
+    <div class="heat-scroll"><svg id="heat" class="heat" role="img"></svg></div>
+    <div class="legend"><span data-i18n="less">Menos</span><i style="background:var(--l0)"></i><i style="background:var(--l1)"></i><i style="background:var(--l2)"></i><i style="background:var(--l3)"></i><i style="background:var(--l4)"></i><span data-i18n="more">Más</span></div>
+  </div>
+
+  <div class="grid">
+    <div class="card fade">
+      <div class="card-head">
+        <div><h2 data-i18n="rhythmTitle">Ritmo de trabajo</h2>
+        <p class="sub" id="rhythmSub"></p></div>
+        <div class="seg" role="group" aria-label="Agrupar" id="barSeg">
+          <button type="button" data-mode="month" aria-pressed="true" data-i18n="byMonth">Por mes</button>
+          <button type="button" data-mode="weekday" aria-pressed="false" data-i18n="byWeekday">Por día</button>
+        </div>
+      </div>
+      <svg id="bars" class="bars" role="img" style="width:100%;height:230px"></svg>
+    </div>
+    <div class="card fade">
+      <h2 data-i18n="langTitle">Lenguajes</h2>
+      <p class="sub" data-i18n="langSub">Haz clic en un lenguaje para filtrar los repositorios.</p>
+      <div id="langs"></div>
+    </div>
+  </div>
+
+  <div class="card fade">
+    <div class="card-head"><div><h2 data-i18n="reposTitle">Repositorios públicos</h2>
+      <p class="sub" id="reposSub"></p></div></div>
+    <div class="filters">
+      <input id="q" type="search" data-i18n-ph="search" placeholder="Buscar repositorio…" aria-label="Buscar">
+      <select id="sort" aria-label="Ordenar">
+        <option value="pushed" data-i18n="sortRecent">Más recientes</option>
+        <option value="stars" data-i18n="sortStars">Más estrellas</option>
+        <option value="name" data-i18n="sortName">Nombre</option>
+      </select>
+    </div>
+    <div class="repos" id="repos"></div>
+  </div>
+
+  <div class="card fade" id="collabCard" hidden>
+    <div class="card-head">
+      <div><h2 data-i18n="colTitle">Colaboraciones</h2>
+      <p class="sub" id="colSub"></p></div>
+      <div class="seg" role="group" aria-label="Filtrar colaboraciones" id="colSeg">
+        <button type="button" data-v="all" aria-pressed="true" data-i18n="colAll">Todas</button>
+        <button type="button" data-v="public" aria-pressed="false" data-i18n="colPublic">Públicas</button>
+        <button type="button" data-v="private" aria-pressed="false" data-i18n="colPrivate">Privadas</button>
+      </div>
+    </div>
+    <div class="mini" id="colKpis"></div>
+    <div class="share" id="colShare" role="img"></div>
+    <p class="share-note" id="colShareNote"></p>
+    <div class="collabs" id="collabs"></div>
+  </div>
+
+  <footer id="foot"></footer>
+</div>
+<div id="tip" role="tooltip"></div>
+
+<script>
+const T = {
+  es: { subtitle:"Estudiante de Ingeniería en Sistemas · actividad en GitHub", profile:"Ver perfil",
+    heatTitle:"Contribuciones del último año", heatSub:"Pasa el cursor por un día para ver el detalle; haz clic para resaltar su mes.",
+    less:"Menos", more:"Más", rhythmTitle:"Ritmo de trabajo", byMonth:"Por mes", byWeekday:"Por día",
+    langTitle:"Lenguajes", langSub:"Haz clic en un lenguaje para filtrar los repositorios.",
+    reposTitle:"Repositorios públicos", search:"Buscar repositorio…", sortRecent:"Más recientes", sortStars:"Más estrellas", sortName:"Nombre",
+    kContrib:"Contribuciones (último año)", kCommits:"Commits", kPRs:"Pull requests", kReviews:"Revisiones de PR", kStreak:"Racha actual (días)", kLongest:"Racha más larga (días)",
+    contribs:n=>`${n} ${n===1?"contribución":"contribuciones"}`, rhythmMonth:"Contribuciones por mes. Pasa el cursor sobre una barra.", rhythmWeek:"Contribuciones por día de la semana.",
+    reposCount:(n,l)=>`${n} repositorio${n===1?"":"s"}${l?` con ${l}`:""}`, noRepos:"No hay repositorios que coincidan.", clear:"Quitar filtro",
+    updated:d=>`Datos actualizados automáticamente el ${d}.`, error:"No se pudieron cargar los datos. Vuelve a intentarlo en unos minutos.",
+    colTitle:"Colaboraciones", colAll:"Todas", colPublic:"Públicas", colPrivate:"Privadas",
+    colSub:y=>`Repositorios de otras personas y organizaciones en los que he contribuido desde ${y}. Los privados muestran solo a su dueño.`,
+    cRepos:"Repositorios", cOwners:"Personas y organizaciones", cCommits:"Commits", cPRs:"Pull requests", cOther:"Revisiones e issues",
+    shareNote:"Reparto de contribuciones. Pasa el cursor por un tramo.", privateBadge:"Privado", publicBadge:"Público",
+    privRepos:n=>`${n} repositorio${n===1?"":"s"} privado${n===1?"":"s"}`, org:"Organización", person:"Persona",
+    commitsN:n=>`${n} commit${n===1?"":"s"}`, prsN:n=>`${n} PR${n===1?"":"s"}`, reviewsN:n=>`${n} revisi${n===1?"ón":"ones"}`, issuesN:n=>`${n} issue${n===1?"":"s"}`,
+    period:(a,b)=>a===b?a:`${a} – ${b}`, ofTotal:p=>`${p}% de mis contribuciones en colaboración`,
+    restricted:n=>`Además hay ${n} ${n===1?"contribución":"contribuciones"} en repositorios privados sin detalle.`, noCollabs:"No hay colaboraciones en esta categoría.",
+    restrictedOnly:n=>`${n} ${n===1?"contribución":"contribuciones"} en repositorios privados. El detalle de sus dueños aún no está disponible.`,
+    months:["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"], days:["dom","lun","mar","mié","jue","vie","sáb"], locale:"es" },
+  en: { subtitle:"Systems Engineering Student · GitHub activity", profile:"View profile",
+    heatTitle:"Contributions in the last year", heatSub:"Hover a day to see details; click to highlight its month.",
+    less:"Less", more:"More", rhythmTitle:"Work rhythm", byMonth:"By month", byWeekday:"By weekday",
+    langTitle:"Languages", langSub:"Click a language to filter the repositories.",
+    reposTitle:"Public repositories", search:"Search repository…", sortRecent:"Most recent", sortStars:"Most stars", sortName:"Name",
+    kContrib:"Contributions (last year)", kCommits:"Commits", kPRs:"Pull requests", kReviews:"PR reviews", kStreak:"Current streak (days)", kLongest:"Longest streak (days)",
+    contribs:n=>`${n} contribution${n===1?"":"s"}`, rhythmMonth:"Contributions per month. Hover a bar.", rhythmWeek:"Contributions per weekday.",
+    reposCount:(n,l)=>`${n} repositor${n===1?"y":"ies"}${l?` using ${l}`:""}`, noRepos:"No repositories match.", clear:"Clear filter",
+    updated:d=>`Data refreshed automatically on ${d}.`, error:"Data could not be loaded. Please try again in a few minutes.",
+    colTitle:"Collaborations", colAll:"All", colPublic:"Public", colPrivate:"Private",
+    colSub:y=>`Repositories owned by other people and organizations that I have contributed to since ${y}. Private ones show only their owner.`,
+    cRepos:"Repositories", cOwners:"People and organizations", cCommits:"Commits", cPRs:"Pull requests", cOther:"Reviews and issues",
+    shareNote:"Share of contributions. Hover a segment.", privateBadge:"Private", publicBadge:"Public",
+    privRepos:n=>`${n} private repositor${n===1?"y":"ies"}`, org:"Organization", person:"Person",
+    commitsN:n=>`${n} commit${n===1?"":"s"}`, prsN:n=>`${n} PR${n===1?"":"s"}`, reviewsN:n=>`${n} review${n===1?"":"s"}`, issuesN:n=>`${n} issue${n===1?"":"s"}`,
+    period:(a,b)=>a===b?a:`${a} – ${b}`, ofTotal:p=>`${p}% of my collaboration contributions`,
+    restricted:n=>`Plus ${n} contribution${n===1?"":"s"} in private repositories without details.`, noCollabs:"No collaborations in this category.",
+    restrictedOnly:n=>`${n} contribution${n===1?"":"s"} in private repositories. Details about their owners are not available yet.`,
+    months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"], days:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"], locale:"en" },
+};
+const store = { get:k=>{ try { return localStorage.getItem(k); } catch { return null; } },
+                set:(k,v)=>{ try { localStorage.setItem(k,v); } catch {} } };
+let lang = store.get("lang") || ((navigator.language||"es").startsWith("es") ? "es" : "en");
+let data = null, barMode = "month", langFilter = null, monthHi = null;
+const $ = s => document.querySelector(s);
+const tip = $("#tip");
+const NS = "http://www.w3.org/2000/svg";
+const el = (tag, attrs={}, parent) => { const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+const fmtDate = (iso, opts) => new Date(iso + (iso.length===10?"T12:00:00":"")).toLocaleDateString(T[lang].locale, opts);
+function showTip(ev, html) { tip.innerHTML = html; tip.classList.add("show");
+  const r = tip.getBoundingClientRect(); let x = ev.clientX + 14, y = ev.clientY - r.height - 10;
+  if (x + r.width > innerWidth - 8) x = ev.clientX - r.width - 14; if (y < 8) y = ev.clientY + 16;
+  tip.style.left = x + "px"; tip.style.top = y + "px"; }
+const hideTip = () => tip.classList.remove("show");
+
+// ---- tema e idioma ----
+const isDark = () => getComputedStyle(document.documentElement).getPropertyValue("--bg").trim().toLowerCase() === "#15131f";
+function applyTheme(t) { if (t) document.documentElement.dataset.theme = t; else delete document.documentElement.dataset.theme;
+  $("#themeBtn").textContent = isDark() ? "☀" : "☾"; }
+applyTheme(store.get("theme"));
+$("#themeBtn").onclick = () => { const t = isDark() ? "light" : "dark"; applyTheme(t); store.set("theme", t); if (data) renderAll(); };
+$("#langBtn").onclick = () => { lang = lang === "es" ? "en" : "es"; store.set("lang", lang); applyLang(); if (data) renderAll(); };
+function applyLang() { document.documentElement.lang = lang; $("#langBtn").textContent = lang === "es" ? "EN" : "ES";
+  document.querySelectorAll("[data-i18n]").forEach(n => { const v = T[lang][n.dataset.i18n]; if (typeof v === "string") n.textContent = v; });
+  document.querySelectorAll("[data-i18n-ph]").forEach(n => n.placeholder = T[lang][n.dataset.i18nPh]); }
+
+// ---- cálculos ----
+function streaks(cal) { let cur = 0, best = 0, run = 0;
+  cal.forEach(d => { run = d.count > 0 ? run + 1 : 0; best = Math.max(best, run); });
+  for (let i = cal.length - 1; i >= 0; i--) { if (cal[i].count > 0) cur++; else if (i === cal.length - 1) continue; else break; }
+  return { cur, best }; }
+function level(c, max) { if (!c) return 0; const q = c / max; return q > .75 ? 4 : q > .5 ? 3 : q > .25 ? 2 : 1; }
+
+// ---- render ----
+function countUp(node, to) { const t0 = performance.now(), dur = 900;
+  const step = t => { const p = Math.min(1, (t - t0) / dur); node.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))).toLocaleString(T[lang].locale);
+    if (p < 1) requestAnimationFrame(step); }; requestAnimationFrame(step); }
+function renderKpis() { const t = data.totals, s = streaks(data.calendar), L = T[lang];
+  const items = [[t.contributions,L.kContrib,"var(--coral)"],[t.commits,L.kCommits,"var(--orange)"],[t.prs,L.kPRs,"var(--turq)"],
+                 [t.reviews,L.kReviews,"var(--ocean)"],[s.cur,L.kStreak,"var(--indigo)"],[s.best,L.kLongest,"var(--sage)"]];
+  $("#kpis").innerHTML = items.map(([, l, c], i) => `<div class="kpi fade" style="animation-delay:${i*60}ms"><i style="background:${c}"></i><b class="mono">0</b><span>${l}</span></div>`).join("");
+  [...$("#kpis").querySelectorAll("b")].forEach((b, i) => countUp(b, items[i][0])); }
+
+function renderHeat() { const svg = $("#heat"); svg.innerHTML = ""; const L = T[lang];
+  const cal = data.calendar, max = Math.max(1, ...cal.map(d => d.count)), S = 13, G = 3, top = 18, left = 28;
+  const first = new Date(cal[0].date + "T12:00:00").getDay(), weeks = Math.ceil((cal.length + first) / 7);
+  const W = left + weeks * (S + G), H = top + 7 * (S + G);
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`); svg.style.width = "100%"; svg.style.minWidth = "680px"; svg.style.display = "block";
+  svg.setAttribute("aria-label", L.heatTitle);
+  [1,3,5].forEach(d => { const t = el("text", { x: 0, y: top + d*(S+G) + 10 }, svg); t.textContent = L.days[d]; });
+  let lastM = -1;
+  cal.forEach((d, i) => { const idx = i + first, w = Math.floor(idx / 7), wd = idx % 7, m = +d.date.slice(5, 7) - 1;
+    if (wd === 0 && m !== lastM && w < weeks - 1) { const t = el("text", { x: left + w*(S+G), y: 11 }, svg); t.textContent = L.months[m]; lastM = m; }
+    const r = el("rect", { x: left + w*(S+G), y: top + wd*(S+G), width: S, height: S, rx: 3, class: "cell",
+      fill: `var(--l${level(d.count, max)})`, "data-m": d.date.slice(0, 7) }, svg);
+    if (monthHi && d.date.startsWith(monthHi)) r.classList.add("on");
+    r.addEventListener("mousemove", ev => showTip(ev, `<b>${L.contribs(d.count)}</b><br>${fmtDate(d.date, { weekday:"long", day:"numeric", month:"long", year:"numeric" })}`));
+    r.addEventListener("mouseleave", hideTip);
+    r.addEventListener("click", () => { monthHi = monthHi === d.date.slice(0, 7) ? null : d.date.slice(0, 7);
+      svg.querySelectorAll(".cell").forEach(c => c.classList.toggle("on", c.dataset.m === monthHi)); renderBars(); });
+  }); }
+
+function renderBars() { const svg = $("#bars"); svg.innerHTML = ""; const L = T[lang];
+  let series;
+  if (barMode === "month") { const map = new Map();
+    data.calendar.forEach(d => { const k = d.date.slice(0, 7); map.set(k, (map.get(k) || 0) + d.count); });
+    series = [...map].slice(-12).map(([k, v]) => ({ key:k, label:L.months[+k.slice(5)-1], full:fmtDate(k + "-15", { month:"long", year:"numeric" }), v }));
+    $("#rhythmSub").textContent = L.rhythmMonth;
+  } else { const sums = Array(7).fill(0); data.calendar.forEach(d => sums[new Date(d.date + "T12:00:00").getDay()] += d.count);
+    series = [1,2,3,4,5,6,0].map(i => ({ key:String(i), label:L.days[i], full:L.days[i], v:sums[i] }));
+    $("#rhythmSub").textContent = L.rhythmWeek; }
+  const W = 560, H = 230, pad = { l: 30, r: 6, t: 14, b: 26 }, max = Math.max(1, ...series.map(s => s.v));
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`); svg.setAttribute("aria-label", L.rhythmTitle);
+  const iw = W - pad.l - pad.r, ih = H - pad.t - pad.b, bw = iw / series.length;
+  for (let g = 0; g <= 4; g++) { const y = pad.t + ih - ih * g / 4;
+    el("line", { x1: pad.l, x2: W - pad.r, y1: y, y2: y, stroke: "var(--line)" }, svg);
+    const t = el("text", { x: pad.l - 6, y: y + 3, "text-anchor": "end" }, svg); t.textContent = Math.round(max * g / 4); }
+  series.forEach((s, i) => { const h = ih * s.v / max, x = pad.l + i * bw + bw * .18, w = bw * .64;
+    const active = barMode === "month" && monthHi === s.key;
+    const r = el("rect", { x, y: pad.t + ih - h, width: w, height: Math.max(h, 0.01), rx: 5, class: "bar grow", tabindex: 0,
+      fill: active ? "var(--coral)" : (i % 2 ? "var(--turq)" : "var(--ocean)"), "aria-label": `${s.full}: ${L.contribs(s.v)}` }, svg);
+    r.style.animationDelay = (i * 35) + "ms";
+    const t = el("text", { x: x + w / 2, y: H - 8, "text-anchor": "middle" }, svg); t.textContent = s.label;
+    const tipHtml = `<b>${L.contribs(s.v)}</b><br>${s.full}`;
+    r.addEventListener("mousemove", ev => showTip(ev, tipHtml)); r.addEventListener("mouseleave", hideTip);
+    r.addEventListener("focus", () => { const b = r.getBoundingClientRect(); showTip({ clientX: b.left + b.width/2, clientY: b.top }, tipHtml); });
+    r.addEventListener("blur", hideTip);
+  }); }
+
+function renderLangs() { const box = $("#langs"), total = data.languages.reduce((a, l) => a + l.bytes, 0) || 1;
+  box.innerHTML = data.languages.slice(0, 8).map(l => { const p = l.bytes / total * 100;
+    return `<div class="lang-row" role="button" tabindex="0" aria-pressed="${langFilter === l.name}" data-lang="${l.name}">
+      <span><span class="dot" style="background:${l.color || "var(--turq)"}"></span>${l.name}</span>
+      <div class="lang-track"><div class="lang-fill" style="background:${l.color || "var(--turq)"}" data-w="${p.toFixed(1)}"></div></div>
+      <small class="mono">${p < 1 ? p.toFixed(1) : Math.round(p)}%</small></div>`; }).join("");
+  requestAnimationFrame(() => box.querySelectorAll(".lang-fill").forEach(f => f.style.width = f.dataset.w + "%"));
+  box.querySelectorAll(".lang-row").forEach(row => {
+    const toggle = () => { langFilter = langFilter === row.dataset.lang ? null : row.dataset.lang; renderLangs(); renderRepos(); };
+    row.onclick = toggle; row.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } };
+    const l = data.languages.find(x => x.name === row.dataset.lang);
+    row.addEventListener("mousemove", ev => showTip(ev, `<b>${l.name}</b><br>${l.repos} repo${l.repos === 1 ? "" : "s"}`));
+    row.addEventListener("mouseleave", hideTip); }); }
+
+function renderRepos() { const L = T[lang], q = $("#q").value.trim().toLowerCase(), sort = $("#sort").value;
+  let list = data.repos.filter(r => (!langFilter || r.languages.includes(langFilter)) &&
+    (!q || r.name.toLowerCase().includes(q) || (r.description || "").toLowerCase().includes(q)));
+  list.sort((a, b) => sort === "stars" ? b.stars - a.stars : sort === "name" ? a.name.localeCompare(b.name) : b.pushed.localeCompare(a.pushed));
+  $("#reposSub").innerHTML = L.reposCount(list.length, langFilter) + (langFilter ? ` · <a href="#" id="clearF">${L.clear}</a>` : "");
+  const c = $("#clearF"); if (c) c.onclick = e => { e.preventDefault(); langFilter = null; renderLangs(); renderRepos(); };
+  const esc = s => String(s).replace(/[&<>"]/g, ch => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[ch]));
+  $("#repos").innerHTML = list.length ? list.map(r => `<a class="repo" href="${esc(r.url)}">
+      <b>${esc(r.name)}</b><p>${esc(r.description || "")}</p>
+      <div class="meta">${r.language ? `<span><span class="dot" style="background:${esc(r.color || "var(--turq)")}"></span>${esc(r.language)}</span>` : ""}
+      <span>★ ${r.stars}</span><span>${fmtDate(r.pushed.slice(0, 10), { day:"numeric", month:"short", year:"numeric" })}</span></div></a>`).join("")
+    : `<div class="empty">${L.noRepos}</div>`; }
+
+let colFilter = "all";
+const escH = s => String(s ?? "").replace(/[&<>"']/g, ch => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[ch]));
+const colTotal = e => e.commits + e.prs + e.reviews + e.issues;
+const PAL = ["var(--ocean)","var(--coral)","var(--turq)","var(--orange)","var(--indigo)","var(--sage)","var(--gold)"];
+function renderCollabs() { const C = data.collabs, L = T[lang], card = $("#collabCard");
+  if (!C || (!C.public.length && !C.private.length && !C.restricted)) { card.hidden = true; return; }
+  card.hidden = false;
+  $("#colSub").textContent = L.colSub(new Date(C.since + "T12:00:00").getFullYear());
+  // Lista unificada: repositorios públicos y dueños de repositorios privados.
+  const items = [...C.public.map(e => ({ ...e, kind:"public", key:e.full_name })),
+                 ...C.private.map(e => ({ ...e, kind:"private", key:"priv:" + e.owner.login }))]
+    .sort((a, b) => colTotal(b) - colTotal(a));
+  items.forEach((e, i) => e.tone = PAL[i % PAL.length]);
+  // Sin detalle de los privados (falta el token), el filtro muestra solo el total.
+  if (!C.private.length && C.restricted) items.push({ kind:"private", key:"priv:restricted", restricted:true,
+    owner:{ login:"", type:"user" }, repos:0, commits:0, prs:0, reviews:0, issues:0, tone:"var(--l1)" });
+  const shown = items.filter(e => colFilter === "all" ? !e.restricted : e.kind === colFilter);
+  const sum = (k, list) => list.reduce((a, e) => a + e[k], 0);
+  const owners = new Set(shown.filter(e => !e.restricted).map(e => e.owner.login)).size;
+  const repos = shown.reduce((a, e) => a + (e.kind === "private" ? e.repos : 1), 0);
+  const k = [[repos, L.cRepos], [owners, L.cOwners], [sum("commits", shown), L.cCommits], [sum("prs", shown), L.cPRs],
+             [sum("reviews", shown) + sum("issues", shown), L.cOther]];
+  $("#colKpis").innerHTML = k.map(([, l]) => `<div><b class="mono">0</b><span>${l}</span></div>`).join("");
+  [...$("#colKpis").querySelectorAll("b")].forEach((b, i) => countUp(b, k[i][0]));
+
+  const grand = Math.max(1, shown.reduce((a, e) => a + colTotal(e), 0));
+  const fmtM = d => d ? fmtDate(d, { month:"short", year:"numeric" }) : "";
+  const name = e => e.kind === "public" ? e.full_name : e.owner.login;
+  const share = $("#colShare"); share.setAttribute("aria-label", L.shareNote);
+  const visible = shown.filter(e => !e.restricted);
+  share.innerHTML = visible.map(e => `<i data-k="${escH(e.key)}" style="background:${e.tone}" data-g="${colTotal(e)}"></i>`).join("");
+  requestAnimationFrame(() => share.querySelectorAll("i").forEach(i => i.style.flexGrow = i.dataset.g));
+  share.hidden = !visible.length;
+  $("#colShareNote").textContent = (visible.length ? L.shareNote : "") +
+    (!C.private.length && C.restricted && colFilter === "all" ? " " + L.restricted(C.restricted) : "");
+
+  $("#collabs").innerHTML = shown.length ? shown.map(e => { if (e.restricted) return `<div class="collab">
+      <div class="who"><div><b>🔒 ${L.privateBadge}</b><small>${L.restrictedOnly(C.restricted)}</small></div></div></div>`;
+    const raw = colTotal(e) / grand * 100, pct = raw > 0 && raw < 1 ? 0.5 : Math.round(raw);
+    const chips = [e.commits && `<span class="c">${L.commitsN(e.commits)}</span>`, e.prs && `<span>${L.prsN(e.prs)}</span>`,
+                   e.reviews && `<span>${L.reviewsN(e.reviews)}</span>`, e.issues && `<span>${L.issuesN(e.issues)}</span>`].filter(Boolean).join("");
+    const pub = e.kind === "public";
+    return `<a class="collab" data-k="${escH(e.key)}" href="${escH(pub ? e.url : e.owner.url)}">
+      <div class="who ${e.owner.type === "org" ? "org" : ""}">
+        <img src="${escH(e.owner.avatar + (e.owner.avatar.includes("?") ? "&" : "?") + "s=72")}" alt="" loading="lazy">
+        <div><b>${escH(pub ? e.name : e.owner.login)}</b>
+          <small>${pub ? escH(e.owner.login) : (e.owner.type === "org" ? L.org : L.person) + " · " + L.privRepos(e.repos)}</small></div>
+        <span class="badge ${pub ? "" : "lock"}">${pub ? L.publicBadge : "🔒 " + L.privateBadge}</span>
+      </div>
+      ${pub && e.description ? `<p>${escH(e.description)}</p>` : ""}
+      <div class="chips">${chips}</div>
+      <div class="track"><i style="background:${e.tone}" data-w="${pct}"></i></div>
+      <div class="foot"><span>${pub && e.language ? `<span class="dot" style="background:${escH(e.color || "var(--turq)")}"></span>${escH(e.language)} · ` : ""}${L.period(fmtM(e.first), fmtM(e.last))}</span>
+        <span class="mono">${pct < 1 ? "<1" : pct}%</span></div></a>`; }).join("")
+    : `<div class="empty">${L.noCollabs}</div>`;
+  requestAnimationFrame(() => $("#collabs").querySelectorAll(".track i").forEach(i => i.style.width = i.dataset.w + "%"));
+
+  // Interacción entre la barra de reparto y las tarjetas.
+  const byKey = new Map(shown.map(e => [e.key, e]));
+  share.querySelectorAll("i").forEach(seg => { const e = byKey.get(seg.dataset.k), c = $(`.collab[data-k="${CSS.escape(seg.dataset.k)}"]`);
+    seg.addEventListener("mousemove", ev => { c?.classList.add("hi");
+      showTip(ev, `<b>${escH(name(e))}</b><br>${L.ofTotal(Math.round(colTotal(e) / grand * 100))}`); });
+    seg.addEventListener("mouseleave", () => { c?.classList.remove("hi"); hideTip(); });
+    seg.addEventListener("click", () => c?.scrollIntoView({ behavior:"smooth", block:"nearest" })); });
+  $("#collabs").querySelectorAll(".collab").forEach(c => { const seg = share.querySelector(`i[data-k="${CSS.escape(c.dataset.k)}"]`);
+    c.addEventListener("mouseenter", () => { share.querySelectorAll("i").forEach(i => i.style.opacity = i === seg ? 1 : .35); });
+    c.addEventListener("mouseleave", () => share.querySelectorAll("i").forEach(i => i.style.opacity = "")); });
+}
+$("#colSeg").querySelectorAll("button").forEach(b => b.onclick = () => { colFilter = b.dataset.v;
+  $("#colSeg").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b)); renderCollabs(); });
+
+function renderAll() { applyLang(); renderKpis(); renderHeat(); renderBars(); renderLangs(); renderRepos(); renderCollabs();
+  $("#foot").innerHTML = `${T[lang].updated(new Date(data.generated_at).toLocaleString(T[lang].locale, { dateStyle:"long", timeStyle:"short" }))} · <a href="https://github.com/ChristopherMendoz">github.com/ChristopherMendoz</a>`; }
+
+document.querySelectorAll("#barSeg button").forEach(b => b.onclick = () => { barMode = b.dataset.mode;
+  document.querySelectorAll("#barSeg button").forEach(x => x.setAttribute("aria-pressed", x === b)); renderBars(); });
+$("#q").oninput = renderRepos; $("#sort").onchange = renderRepos;
+
+applyLang();
+fetch("stats.json", { cache: "no-store" }).then(r => { if (!r.ok) throw 0; return r.json(); })
+  .then(d => { data = d; if (d.user?.avatar) $("#avatar").src = d.user.avatar; if (d.user?.name) $("#name").textContent = d.user.name; renderAll(); })
+  .catch(() => { $("#kpis").innerHTML = `<div class="kpi">${T[lang].error}</div>`; });
+</script>
+</body>
+</html>

@@ -1,0 +1,2118 @@
+{
+ "generated_at": "2026-11-28T07:18:47+00:00",
+ "user": {
+  "login": "ChristopherMendoz",
+  "name": "Christopher Mendoza",
+  "avatar": "https://avatars.githubusercontent.com/u/108841678?v=4",
+  "url": "https://github.com/ChristopherMendoz",
+  "followers": 12,
+  "public_repos": 33
+ },
+ "totals": {
+  "contributions": 616,
+  "commits": 198,
+  "prs": 20,
+  "reviews": 16,
+  "issues": 0,
+  "private": 376
+ },
+ "calendar": [
+  {
+   "date": "2025-11-23",
+   "count": 1
+  },
+  {
+   "date": "2025-11-24",
+   "count": 0
+  },
+  {
+   "date": "2025-11-25",
+   "count": 0
+  },
+  {
+   "date": "2025-11-26",
+   "count": 0
+  },
+  {
+   "date": "2025-11-27",
+   "count": 0
+  },
+  {
+   "date": "2025-11-28",
+   "count": 0
+  },
+  {
+   "date": "2025-11-29",
+   "count": 0
+  },
+  {
+   "date": "2025-11-30",
+   "count": 0
+  },
+  {
+   "date": "2025-12-01",
+   "count": 0
+  },
+  {
+   "date": "2025-12-02",
+   "count": 0
+  },
+  {
+   "date": "2025-12-03",
+   "count": 0
+  },
+  {
+   "date": "2025-12-04",
+   "count": 0
+  },
+  {
+   "date": "2025-12-05",
+   "count": 0
+  },
+  {
+   "date": "2025-12-06",
+   "count": 0
+  },
+  {
+   "date": "2025-12-07",
+   "count": 0
+  },
+  {
+   "date": "2025-12-08",
+   "count": 0
+  },
+  {
+   "date": "2025-12-09",
+   "count": 0
+  },
+  {
+   "date": "2025-12-10",
+   "count": 0
+  },
+  {
+   "date": "2025-12-11",
+   "count": 0
+  },
+  {
+   "date": "2025-12-12",
+   "count": 0
+  },
+  {
+   "date": "2025-12-13",
+   "count": 0
+  },
+  {
+   "date": "2025-12-14",
+   "count": 0
+  },
+  {
+   "date": "2025-12-15",
+   "count": 0
+  },
+  {
+   "date": "2025-12-16",
+   "count": 0
+  },
+  {
+   "date": "2025-12-17",
+   "count": 0
+  },
+  {
+   "date": "2025-12-18",
+   "count": 0
+  },
+  {
+   "date": "2025-12-19",
+   "count": 0
+  },
+  {
+   "date": "2025-12-20",
+   "count": 0
+  },
+  {
+   "date": "2025-12-21",
+   "count": 0
+  },
+  {
+   "date": "2025-12-22",
+   "count": 0
+  },
+  {
+   "date": "2025-12-23",
+   "count": 0
+  },
+  {
+   "date": "2025-12-24",
+   "count": 0
+  },
+  {
+   "date": "2025-12-25",
+   "count": 0
+  },
+  {
+   "date": "2025-12-26",
+   "count": 0
+  },
+  {
+   "date": "2025-12-27",
+   "count": 0
+  },
+  {
+   "date": "2025-12-28",
+   "count": 0
+  },
+  {
+   "date": "2025-12-29",
+   "count": 0
+  },
+  {
+   "date": "2025-12-30",
+   "count": 0
+  },
+  {
+   "date": "2025-12-31",
+   "count": 0
+  },
+  {
+   "date": "2026-01-01",
+   "count": 0
+  },
+  {
+   "date": "2026-01-02",
+   "count": 0
+  },
+  {
+   "date": "2026-01-03",
+   "count": 0
+  },
+  {
+   "date": "2026-01-04",
+   "count": 0
+  },
+  {
+   "date": "2026-01-05",
+   "count": 0
+  },
+  {
+   "date": "2026-01-06",
+   "count": 0
+  },
+  {
+   "date": "2026-01-07",
+   "count": 0
+  },
+  {
+   "date": "2026-01-08",
+   "count": 0
+  },
+  {
+   "date": "2026-01-09",
+   "count": 0
+  },
+  {
+   "date": "2026-01-10",
+   "count": 0
+  },
+  {
+   "date": "2026-01-11",
+   "count": 0
+  },
+  {
+   "date": "2026-01-12",
+   "count": 0
+  },
+  {
+   "date": "2026-01-13",
+   "count": 0
+  },
+  {
+   "date": "2026-01-14",
+   "count": 0
+  },
+  {
+   "date": "2026-01-15",
+   "count": 0
+  },
+  {
+   "date": "2026-01-16",
+   "count": 0
+  },
+  {
+   "date": "2026-01-17",
+   "count": 0
+  },
+  {
+   "date": "2026-01-18",
+   "count": 0
+  },
+  {
+   "date": "2026-01-19",
+   "count": 0
+  },
+  {
+   "date": "2026-01-20",
+   "count": 0
+  },
+  {
+   "date": "2026-01-21",
+   "count": 0
+  },
+  {
+   "date": "2026-01-22",
+   "count": 0
+  },
+  {
+   "date": "2026-01-23",
+   "count": 0
+  },
+  {
+   "date": "2026-01-24",
+   "count": 0
+  },
+  {
+   "date": "2026-01-25",
+   "count": 0
+  },
+  {
+   "date": "2026-01-26",
+   "count": 0
+  },
+  {
+   "date": "2026-01-27",
+   "count": 0
+  },
+  {
+   "date": "2026-01-28",
+   "count": 0
+  },
+  {
+   "date": "2026-01-29",
+   "count": 0
+  },
+  {
+   "date": "2026-01-30",
+   "count": 0
+  },
+  {
+   "date": "2026-01-31",
+   "count": 0
+  },
+  {
+   "date": "2026-02-01",
+   "count": 0
+  },
+  {
+   "date": "2026-02-02",
+   "count": 0
+  },
+  {
+   "date": "2026-02-03",
+   "count": 0
+  },
+  {
+   "date": "2026-02-04",
+   "count": 0
+  },
+  {
+   "date": "2026-02-05",
+   "count": 0
+  },
+  {
+   "date": "2026-02-06",
+   "count": 0
+  },
+  {
+   "date": "2026-02-07",
+   "count": 0
+  },
+  {
+   "date": "2026-02-08",
+   "count": 0
+  },
+  {
+   "date": "2026-02-09",
+   "count": 0
+  },
+  {
+   "date": "2026-02-10",
+   "count": 0
+  },
+  {
+   "date": "2026-02-11",
+   "count": 0
+  },
+  {
+   "date": "2026-02-12",
+   "count": 0
+  },
+  {
+   "date": "2026-02-13",
+   "count": 0
+  },
+  {
+   "date": "2026-02-14",
+   "count": 0
+  },
+  {
+   "date": "2026-02-15",
+   "count": 0
+  },
+  {
+   "date": "2026-02-16",
+   "count": 0
+  },
+  {
+   "date": "2026-02-17",
+   "count": 0
+  },
+  {
+   "date": "2026-02-18",
+   "count": 0
+  },
+  {
+   "date": "2026-02-19",
+   "count": 0
+  },
+  {
+   "date": "2026-02-20",
+   "count": 0
+  },
+  {
+   "date": "2026-02-21",
+   "count": 0
+  },
+  {
+   "date": "2026-02-22",
+   "count": 0
+  },
+  {
+   "date": "2026-02-23",
+   "count": 0
+  },
+  {
+   "date": "2026-02-24",
+   "count": 0
+  },
+  {
+   "date": "2026-02-25",
+   "count": 0
+  },
+  {
+   "date": "2026-02-26",
+   "count": 0
+  },
+  {
+   "date": "2026-02-27",
+   "count": 0
+  },
+  {
+   "date": "2026-02-28",
+   "count": 0
+  },
+  {
+   "date": "2026-03-01",
+   "count": 0
+  },
+  {
+   "date": "2026-03-02",
+   "count": 0
+  },
+  {
+   "date": "2026-03-03",
+   "count": 0
+  },
+  {
+   "date": "2026-03-04",
+   "count": 0
+  },
+  {
+   "date": "2026-03-05",
+   "count": 0
+  },
+  {
+   "date": "2026-03-06",
+   "count": 0
+  },
+  {
+   "date": "2026-03-07",
+   "count": 0
+  },
+  {
+   "date": "2026-03-08",
+   "count": 0
+  },
+  {
+   "date": "2026-03-09",
+   "count": 0
+  },
+  {
+   "date": "2026-03-10",
+   "count": 0
+  },
+  {
+   "date": "2026-03-11",
+   "count": 0
+  },
+  {
+   "date": "2026-03-12",
+   "count": 0
+  },
+  {
+   "date": "2026-03-13",
+   "count": 0
+  },
+  {
+   "date": "2026-03-14",
+   "count": 0
+  },
+  {
+   "date": "2026-03-15",
+   "count": 0
+  },
+  {
+   "date": "2026-03-16",
+   "count": 0
+  },
+  {
+   "date": "2026-03-17",
+   "count": 0
+  },
+  {
+   "date": "2026-03-18",
+   "count": 0
+  },
+  {
+   "date": "2026-03-19",
+   "count": 0
+  },
+  {
+   "date": "2026-03-20",
+   "count": 0
+  },
+  {
+   "date": "2026-03-21",
+   "count": 0
+  },
+  {
+   "date": "2026-03-22",
+   "count": 0
+  },
+  {
+   "date": "2026-03-23",
+   "count": 0
+  },
+  {
+   "date": "2026-03-24",
+   "count": 0
+  },
+  {
+   "date": "2026-03-25",
+   "count": 0
+  },
+  {
+   "date": "2026-03-26",
+   "count": 0
+  },
+  {
+   "date": "2026-03-27",
+   "count": 0
+  },
+  {
+   "date": "2026-03-28",
+   "count": 0
+  },
+  {
+   "date": "2026-03-29",
+   "count": 0
+  },
+  {
+   "date": "2026-03-30",
+   "count": 0
+  },
+  {
+   "date": "2026-03-31",
+   "count": 0
+  },
+  {
+   "date": "2026-04-01",
+   "count": 0
+  },
+  {
+   "date": "2026-04-02",
+   "count": 0
+  },
+  {
+   "date": "2026-04-03",
+   "count": 0
+  },
+  {
+   "date": "2026-04-04",
+   "count": 0
+  },
+  {
+   "date": "2026-04-05",
+   "count": 0
+  },
+  {
+   "date": "2026-04-06",
+   "count": 0
+  },
+  {
+   "date": "2026-04-07",
+   "count": 0
+  },
+  {
+   "date": "2026-04-08",
+   "count": 0
+  },
+  {
+   "date": "2026-04-09",
+   "count": 0
+  },
+  {
+   "date": "2026-04-10",
+   "count": 0
+  },
+  {
+   "date": "2026-04-11",
+   "count": 0
+  },
+  {
+   "date": "2026-04-12",
+   "count": 0
+  },
+  {
+   "date": "2026-04-13",
+   "count": 0
+  },
+  {
+   "date": "2026-04-14",
+   "count": 0
+  },
+  {
+   "date": "2026-04-15",
+   "count": 0
+  },
+  {
+   "date": "2026-04-16",
+   "count": 0
+  },
+  {
+   "date": "2026-04-17",
+   "count": 0
+  },
+  {
+   "date": "2026-04-18",
+   "count": 0
+  },
+  {
+   "date": "2026-04-19",
+   "count": 0
+  },
+  {
+   "date": "2026-04-20",
+   "count": 0
+  },
+  {
+   "date": "2026-04-21",
+   "count": 0
+  },
+  {
+   "date": "2026-04-22",
+   "count": 0
+  },
+  {
+   "date": "2026-04-23",
+   "count": 0
+  },
+  {
+   "date": "2026-04-24",
+   "count": 0
+  },
+  {
+   "date": "2026-04-25",
+   "count": 0
+  },
+  {
+   "date": "2026-04-26",
+   "count": 0
+  },
+  {
+   "date": "2026-04-27",
+   "count": 0
+  },
+  {
+   "date": "2026-04-28",
+   "count": 0
+  },
+  {
+   "date": "2026-04-29",
+   "count": 0
+  },
+  {
+   "date": "2026-04-30",
+   "count": 0
+  },
+  {
+   "date": "2026-05-01",
+   "count": 0
+  },
+  {
+   "date": "2026-05-02",
+   "count": 0
+  },
+  {
+   "date": "2026-05-03",
+   "count": 0
+  },
+  {
+   "date": "2026-05-04",
+   "count": 0
+  },
+  {
+   "date": "2026-05-05",
+   "count": 0
+  },
+  {
+   "date": "2026-05-06",
+   "count": 0
+  },
+  {
+   "date": "2026-05-07",
+   "count": 0
+  },
+  {
+   "date": "2026-05-08",
+   "count": 0
+  },
+  {
+   "date": "2026-05-09",
+   "count": 0
+  },
+  {
+   "date": "2026-05-10",
+   "count": 0
+  },
+  {
+   "date": "2026-05-11",
+   "count": 0
+  },
+  {
+   "date": "2026-05-12",
+   "count": 0
+  },
+  {
+   "date": "2026-05-13",
+   "count": 0
+  },
+  {
+   "date": "2026-05-14",
+   "count": 0
+  },
+  {
+   "date": "2026-05-15",
+   "count": 0
+  },
+  {
+   "date": "2026-05-16",
+   "count": 0
+  },
+  {
+   "date": "2026-05-17",
+   "count": 0
+  },
+  {
+   "date": "2026-05-18",
+   "count": 0
+  },
+  {
+   "date": "2026-05-19",
+   "count": 0
+  },
+  {
+   "date": "2026-05-20",
+   "count": 0
+  },
+  {
+   "date": "2026-05-21",
+   "count": 0
+  },
+  {
+   "date": "2026-05-22",
+   "count": 0
+  },
+  {
+   "date": "2026-05-23",
+   "count": 0
+  },
+  {
+   "date": "2026-05-24",
+   "count": 0
+  },
+  {
+   "date": "2026-05-25",
+   "count": 0
+  },
+  {
+   "date": "2026-05-26",
+   "count": 0
+  },
+  {
+   "date": "2026-05-27",
+   "count": 0
+  },
+  {
+   "date": "2026-05-28",
+   "count": 0
+  },
+  {
+   "date": "2026-05-29",
+   "count": 0
+  },
+  {
+   "date": "2026-05-30",
+   "count": 0
+  },
+  {
+   "date": "2026-05-31",
+   "count": 0
+  },
+  {
+   "date": "2026-06-01",
+   "count": 0
+  },
+  {
+   "date": "2026-06-02",
+   "count": 0
+  },
+  {
+   "date": "2026-06-03",
+   "count": 0
+  },
+  {
+   "date": "2026-06-04",
+   "count": 1
+  },
+  {
+   "date": "2026-06-05",
+   "count": 0
+  },
+  {
+   "date": "2026-06-06",
+   "count": 0
+  },
+  {
+   "date": "2026-06-07",
+   "count": 2
+  },
+  {
+   "date": "2026-06-08",
+   "count": 2
+  },
+  {
+   "date": "2026-06-09",
+   "count": 1
+  },
+  {
+   "date": "2026-06-10",
+   "count": 1
+  },
+  {
+   "date": "2026-06-11",
+   "count": 2
+  },
+  {
+   "date": "2026-06-12",
+   "count": 2
+  },
+  {
+   "date": "2026-06-13",
+   "count": 0
+  },
+  {
+   "date": "2026-06-14",
+   "count": 0
+  },
+  {
+   "date": "2026-06-15",
+   "count": 2
+  },
+  {
+   "date": "2026-06-16",
+   "count": 1
+  },
+  {
+   "date": "2026-06-17",
+   "count": 1
+  },
+  {
+   "date": "2026-06-18",
+   "count": 2
+  },
+  {
+   "date": "2026-06-19",
+   "count": 3
+  },
+  {
+   "date": "2026-06-20",
+   "count": 0
+  },
+  {
+   "date": "2026-06-21",
+   "count": 0
+  },
+  {
+   "date": "2026-06-22",
+   "count": 0
+  },
+  {
+   "date": "2026-06-23",
+   "count": 0
+  },
+  {
+   "date": "2026-06-24",
+   "count": 3
+  },
+  {
+   "date": "2026-06-25",
+   "count": 0
+  },
+  {
+   "date": "2026-06-26",
+   "count": 4
+  },
+  {
+   "date": "2026-06-27",
+   "count": 0
+  },
+  {
+   "date": "2026-06-28",
+   "count": 0
+  },
+  {
+   "date": "2026-06-29",
+   "count": 3
+  },
+  {
+   "date": "2026-06-30",
+   "count": 0
+  },
+  {
+   "date": "2026-07-01",
+   "count": 2
+  },
+  {
+   "date": "2026-07-02",
+   "count": 1
+  },
+  {
+   "date": "2026-07-03",
+   "count": 0
+  },
+  {
+   "date": "2026-07-04",
+   "count": 0
+  },
+  {
+   "date": "2026-07-05",
+   "count": 0
+  },
+  {
+   "date": "2026-07-06",
+   "count": 0
+  },
+  {
+   "date": "2026-07-07",
+   "count": 0
+  },
+  {
+   "date": "2026-07-08",
+   "count": 1
+  },
+  {
+   "date": "2026-07-09",
+   "count": 2
+  },
+  {
+   "date": "2026-07-10",
+   "count": 0
+  },
+  {
+   "date": "2026-07-11",
+   "count": 0
+  },
+  {
+   "date": "2026-07-12",
+   "count": 0
+  },
+  {
+   "date": "2026-07-13",
+   "count": 0
+  },
+  {
+   "date": "2026-07-14",
+   "count": 0
+  },
+  {
+   "date": "2026-07-15",
+   "count": 0
+  },
+  {
+   "date": "2026-07-16",
+   "count": 0
+  },
+  {
+   "date": "2026-07-17",
+   "count": 0
+  },
+  {
+   "date": "2026-07-18",
+   "count": 0
+  },
+  {
+   "date": "2026-07-19",
+   "count": 0
+  },
+  {
+   "date": "2026-07-20",
+   "count": 0
+  },
+  {
+   "date": "2026-07-21",
+   "count": 0
+  },
+  {
+   "date": "2026-07-22",
+   "count": 0
+  },
+  {
+   "date": "2026-07-23",
+   "count": 0
+  },
+  {
+   "date": "2026-07-24",
+   "count": 0
+  },
+  {
+   "date": "2026-07-25",
+   "count": 0
+  },
+  {
+   "date": "2026-07-26",
+   "count": 0
+  },
+  {
+   "date": "2026-07-27",
+   "count": 0
+  },
+  {
+   "date": "2026-07-28",
+   "count": 0
+  },
+  {
+   "date": "2026-07-29",
+   "count": 0
+  },
+  {
+   "date": "2026-07-30",
+   "count": 0
+  },
+  {
+   "date": "2026-07-31",
+   "count": 0
+  },
+  {
+   "date": "2026-08-01",
+   "count": 0
+  },
+  {
+   "date": "2026-08-02",
+   "count": 0
+  },
+  {
+   "date": "2026-08-03",
+   "count": 0
+  },
+  {
+   "date": "2026-08-04",
+   "count": 2
+  },
+  {
+   "date": "2026-08-05",
+   "count": 3
+  },
+  {
+   "date": "2026-08-06",
+   "count": 7
+  },
+  {
+   "date": "2026-08-07",
+   "count": 12
+  },
+  {
+   "date": "2026-08-08",
+   "count": 0
+  },
+  {
+   "date": "2026-08-09",
+   "count": 0
+  },
+  {
+   "date": "2026-08-10",
+   "count": 4
+  },
+  {
+   "date": "2026-08-11",
+   "count": 2
+  },
+  {
+   "date": "2026-08-12",
+   "count": 8
+  },
+  {
+   "date": "2026-08-13",
+   "count": 9
+  },
+  {
+   "date": "2026-08-14",
+   "count": 7
+  },
+  {
+   "date": "2026-08-15",
+   "count": 0
+  },
+  {
+   "date": "2026-08-16",
+   "count": 0
+  },
+  {
+   "date": "2026-08-17",
+   "count": 5
+  },
+  {
+   "date": "2026-08-18",
+   "count": 1
+  },
+  {
+   "date": "2026-08-19",
+   "count": 7
+  },
+  {
+   "date": "2026-08-20",
+   "count": 4
+  },
+  {
+   "date": "2026-08-21",
+   "count": 2
+  },
+  {
+   "date": "2026-08-22",
+   "count": 0
+  },
+  {
+   "date": "2026-08-23",
+   "count": 0
+  },
+  {
+   "date": "2026-08-24",
+   "count": 3
+  },
+  {
+   "date": "2026-08-25",
+   "count": 4
+  },
+  {
+   "date": "2026-08-26",
+   "count": 12
+  },
+  {
+   "date": "2026-08-27",
+   "count": 0
+  },
+  {
+   "date": "2026-08-28",
+   "count": 1
+  },
+  {
+   "date": "2026-08-29",
+   "count": 0
+  },
+  {
+   "date": "2026-08-30",
+   "count": 0
+  },
+  {
+   "date": "2026-08-31",
+   "count": 5
+  },
+  {
+   "date": "2026-09-01",
+   "count": 2
+  },
+  {
+   "date": "2026-09-02",
+   "count": 3
+  },
+  {
+   "date": "2026-09-03",
+   "count": 7
+  },
+  {
+   "date": "2026-09-04",
+   "count": 2
+  },
+  {
+   "date": "2026-09-05",
+   "count": 1
+  },
+  {
+   "date": "2026-09-06",
+   "count": 0
+  },
+  {
+   "date": "2026-09-07",
+   "count": 5
+  },
+  {
+   "date": "2026-09-08",
+   "count": 1
+  },
+  {
+   "date": "2026-09-09",
+   "count": 3
+  },
+  {
+   "date": "2026-09-10",
+   "count": 8
+  },
+  {
+   "date": "2026-09-11",
+   "count": 0
+  },
+  {
+   "date": "2026-09-12",
+   "count": 0
+  },
+  {
+   "date": "2026-09-13",
+   "count": 0
+  },
+  {
+   "date": "2026-09-14",
+   "count": 2
+  },
+  {
+   "date": "2026-09-15",
+   "count": 0
+  },
+  {
+   "date": "2026-09-16",
+   "count": 6
+  },
+  {
+   "date": "2026-09-17",
+   "count": 3
+  },
+  {
+   "date": "2026-09-18",
+   "count": 2
+  },
+  {
+   "date": "2026-09-19",
+   "count": 0
+  },
+  {
+   "date": "2026-09-20",
+   "count": 0
+  },
+  {
+   "date": "2026-09-21",
+   "count": 1
+  },
+  {
+   "date": "2026-09-22",
+   "count": 3
+  },
+  {
+   "date": "2026-09-23",
+   "count": 0
+  },
+  {
+   "date": "2026-09-24",
+   "count": 7
+  },
+  {
+   "date": "2026-09-25",
+   "count": 4
+  },
+  {
+   "date": "2026-09-26",
+   "count": 0
+  },
+  {
+   "date": "2026-09-27",
+   "count": 0
+  },
+  {
+   "date": "2026-09-28",
+   "count": 3
+  },
+  {
+   "date": "2026-09-29",
+   "count": 1
+  },
+  {
+   "date": "2026-09-30",
+   "count": 3
+  },
+  {
+   "date": "2026-10-01",
+   "count": 4
+  },
+  {
+   "date": "2026-10-02",
+   "count": 8
+  },
+  {
+   "date": "2026-10-03",
+   "count": 0
+  },
+  {
+   "date": "2026-10-04",
+   "count": 0
+  },
+  {
+   "date": "2026-10-05",
+   "count": 0
+  },
+  {
+   "date": "2026-10-06",
+   "count": 0
+  },
+  {
+   "date": "2026-10-07",
+   "count": 0
+  },
+  {
+   "date": "2026-10-08",
+   "count": 0
+  },
+  {
+   "date": "2026-10-09",
+   "count": 0
+  },
+  {
+   "date": "2026-10-10",
+   "count": 0
+  },
+  {
+   "date": "2026-10-11",
+   "count": 2
+  },
+  {
+   "date": "2026-10-12",
+   "count": 0
+  },
+  {
+   "date": "2026-10-13",
+   "count": 3
+  },
+  {
+   "date": "2026-10-14",
+   "count": 0
+  },
+  {
+   "date": "2026-10-15",
+   "count": 0
+  },
+  {
+   "date": "2026-10-16",
+   "count": 0
+  },
+  {
+   "date": "2026-10-17",
+   "count": 0
+  },
+  {
+   "date": "2026-10-18",
+   "count": 0
+  },
+  {
+   "date": "2026-10-19",
+   "count": 0
+  },
+  {
+   "date": "2026-10-20",
+   "count": 0
+  },
+  {
+   "date": "2026-10-21",
+   "count": 0
+  },
+  {
+   "date": "2026-10-22",
+   "count": 1
+  },
+  {
+   "date": "2026-10-23",
+   "count": 3
+  },
+  {
+   "date": "2026-10-24",
+   "count": 1
+  },
+  {
+   "date": "2026-10-25",
+   "count": 0
+  },
+  {
+   "date": "2026-10-26",
+   "count": 0
+  },
+  {
+   "date": "2026-10-27",
+   "count": 0
+  },
+  {
+   "date": "2026-10-28",
+   "count": 3
+  },
+  {
+   "date": "2026-10-29",
+   "count": 0
+  },
+  {
+   "date": "2026-10-30",
+   "count": 7
+  },
+  {
+   "date": "2026-10-31",
+   "count": 0
+  },
+  {
+   "date": "2026-11-01",
+   "count": 0
+  },
+  {
+   "date": "2026-11-02",
+   "count": 0
+  },
+  {
+   "date": "2026-11-03",
+   "count": 0
+  },
+  {
+   "date": "2026-11-04",
+   "count": 3
+  },
+  {
+   "date": "2026-11-05",
+   "count": 27
+  },
+  {
+   "date": "2026-11-06",
+   "count": 31
+  },
+  {
+   "date": "2026-11-07",
+   "count": 14
+  },
+  {
+   "date": "2026-11-08",
+   "count": 0
+  },
+  {
+   "date": "2026-11-09",
+   "count": 4
+  },
+  {
+   "date": "2026-11-10",
+   "count": 0
+  },
+  {
+   "date": "2026-11-11",
+   "count": 5
+  },
+  {
+   "date": "2026-11-12",
+   "count": 15
+  },
+  {
+   "date": "2026-11-13",
+   "count": 1
+  },
+  {
+   "date": "2026-11-14",
+   "count": 2
+  },
+  {
+   "date": "2026-11-15",
+   "count": 0
+  },
+  {
+   "date": "2026-11-16",
+   "count": 0
+  },
+  {
+   "date": "2026-11-17",
+   "count": 0
+  },
+  {
+   "date": "2026-11-18",
+   "count": 4
+  },
+  {
+   "date": "2026-11-19",
+   "count": 22
+  },
+  {
+   "date": "2026-11-20",
+   "count": 27
+  },
+  {
+   "date": "2026-11-21",
+   "count": 28
+  },
+  {
+   "date": "2026-11-22",
+   "count": 0
+  },
+  {
+   "date": "2026-11-23",
+   "count": 16
+  },
+  {
+   "date": "2026-11-24",
+   "count": 122
+  },
+  {
+   "date": "2026-11-25",
+   "count": 41
+  },
+  {
+   "date": "2026-11-26",
+   "count": 20
+  },
+  {
+   "date": "2026-11-27",
+   "count": 0
+  },
+  {
+   "date": "2026-11-28",
+   "count": 0
+  }
+ ],
+ "languages": [
+  {
+   "name": "Kotlin",
+   "color": "#A97BFF",
+   "bytes": 758504,
+   "repos": 1
+  },
+  {
+   "name": "TypeScript",
+   "color": "#3178c6",
+   "bytes": 697049,
+   "repos": 1
+  },
+  {
+   "name": "Java",
+   "color": "#b07219",
+   "bytes": 166058,
+   "repos": 20
+  },
+  {
+   "name": "JavaScript",
+   "color": "#f1e05a",
+   "bytes": 143166,
+   "repos": 2
+  },
+  {
+   "name": "HTML",
+   "color": "#e34c26",
+   "bytes": 117737,
+   "repos": 5
+  },
+  {
+   "name": "CSS",
+   "color": "#663399",
+   "bytes": 110961,
+   "repos": 2
+  },
+  {
+   "name": "C#",
+   "color": "#7355dd",
+   "bytes": 86399,
+   "repos": 6
+  },
+  {
+   "name": "Python",
+   "color": "#3572A5",
+   "bytes": 23834,
+   "repos": 1
+  }
+ ],
+ "repos": [
+  {
+   "name": "ChristopherMendoz",
+   "description": "Perfil de GitHub de Christopher Mendoza",
+   "url": "https://github.com/ChristopherMendoz/ChristopherMendoz",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2026-11-27T20:58:55Z",
+   "language": "HTML",
+   "color": "#e34c26",
+   "languages": [
+    "HTML",
+    "Python"
+   ]
+  },
+  {
+   "name": "VinylPlayer",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/VinylPlayer",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2026-11-21T23:02:20Z",
+   "language": "Kotlin",
+   "color": "#A97BFF",
+   "languages": [
+    "Kotlin"
+   ]
+  },
+  {
+   "name": "DragonballDemo",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/DragonballDemo",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2026-10-26T21:32:44Z",
+   "language": "CSS",
+   "color": "#663399",
+   "languages": [
+    "CSS",
+    "JavaScript",
+    "HTML"
+   ]
+  },
+  {
+   "name": "Frontend-basico",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/Frontend-basico",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2026-10-24T00:04:11Z",
+   "language": "HTML",
+   "color": "#e34c26",
+   "languages": [
+    "HTML"
+   ]
+  },
+  {
+   "name": "nest-practica",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/nest-practica",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2026-10-03T01:32:05Z",
+   "language": "TypeScript",
+   "color": "#3178c6",
+   "languages": [
+    "TypeScript",
+    "JavaScript"
+   ]
+  },
+  {
+   "name": "MiPrimerPagina",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/MiPrimerPagina",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2024-05-26T23:40:51Z",
+   "language": "HTML",
+   "color": "#e34c26",
+   "languages": [
+    "HTML",
+    "CSS"
+   ]
+  },
+  {
+   "name": "BibliotecaJSONCompleta",
+   "description": "Holaaaa",
+   "url": "https://github.com/ChristopherMendoz/BibliotecaJSONCompleta",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2023-03-30T14:03:09Z",
+   "language": "C#",
+   "color": "#7355dd",
+   "languages": [
+    "C#"
+   ]
+  },
+  {
+   "name": "libreria",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/libreria",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2023-02-22T19:00:46Z",
+   "language": "C#",
+   "color": "#7355dd",
+   "languages": [
+    "C#",
+    "HTML"
+   ]
+  },
+  {
+   "name": "SistemaDeVenta",
+   "description": "ejemplo basico de un sistema de venta",
+   "url": "https://github.com/ChristopherMendoz/SistemaDeVenta",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2023-02-21T01:25:51Z",
+   "language": "C#",
+   "color": "#7355dd",
+   "languages": [
+    "C#"
+   ]
+  },
+  {
+   "name": "ejemploDeprogra1",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/ejemploDeprogra1",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2023-02-20T01:54:19Z",
+   "language": "C#",
+   "color": "#7355dd",
+   "languages": [
+    "C#"
+   ]
+  },
+  {
+   "name": "RegistroHospital",
+   "description": "Guarda en pdf y excel",
+   "url": "https://github.com/ChristopherMendoz/RegistroHospital",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2023-02-15T17:57:09Z",
+   "language": "C#",
+   "color": "#7355dd",
+   "languages": [
+    "C#"
+   ]
+  },
+  {
+   "name": "Viernes10022023",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/Viernes10022023",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2023-02-10T18:00:59Z",
+   "language": "C#",
+   "color": "#7355dd",
+   "languages": [
+    "C#"
+   ]
+  },
+  {
+   "name": "Lunes14112022",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/Lunes14112022",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2022-11-15T00:28:28Z",
+   "language": "Java",
+   "color": "#b07219",
+   "languages": [
+    "Java"
+   ]
+  },
+  {
+   "name": "Miercoles09112022",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/Miercoles09112022",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2022-11-09T23:53:10Z",
+   "language": "Java",
+   "color": "#b07219",
+   "languages": [
+    "Java"
+   ]
+  },
+  {
+   "name": "cuerposgeometricos",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/cuerposgeometricos",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2022-11-07T18:34:32Z",
+   "language": "Java",
+   "color": "#b07219",
+   "languages": [
+    "Java"
+   ]
+  },
+  {
+   "name": "EjemplosUnidadII",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/EjemplosUnidadII",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2022-11-07T18:19:02Z",
+   "language": "Java",
+   "color": "#b07219",
+   "languages": [
+    "Java"
+   ]
+  },
+  {
+   "name": "Viernes28102022",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/Viernes28102022",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2022-10-31T23:29:36Z",
+   "language": "Java",
+   "color": "#b07219",
+   "languages": [
+    "Java"
+   ]
+  },
+  {
+   "name": "Miercoles26102022",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/Miercoles26102022",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2022-10-26T23:37:04Z",
+   "language": "Java",
+   "color": "#b07219",
+   "languages": [
+    "Java"
+   ]
+  },
+  {
+   "name": "Lunes24102022",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/Lunes24102022",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2022-10-24T23:55:44Z",
+   "language": "Java",
+   "color": "#b07219",
+   "languages": [
+    "Java"
+   ]
+  },
+  {
+   "name": "Lunes17102022",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/Lunes17102022",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2022-10-17T23:49:45Z",
+   "language": "Java",
+   "color": "#b07219",
+   "languages": [
+    "Java"
+   ]
+  },
+  {
+   "name": "primerexamenparcial",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/primerexamenparcial",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2022-10-12T22:53:00Z",
+   "language": "Java",
+   "color": "#b07219",
+   "languages": [
+    "Java"
+   ]
+  },
+  {
+   "name": "bateriadeejercicios",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/bateriadeejercicios",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2022-10-08T04:21:29Z",
+   "language": "Java",
+   "color": "#b07219",
+   "languages": [
+    "Java"
+   ]
+  },
+  {
+   "name": "Lunes03102022",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/Lunes03102022",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2022-10-04T00:03:11Z",
+   "language": "Java",
+   "color": "#b07219",
+   "languages": [
+    "Java"
+   ]
+  },
+  {
+   "name": "Lunes26092022",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/Lunes26092022",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2022-09-26T23:57:41Z",
+   "language": "Java",
+   "color": "#b07219",
+   "languages": [
+    "Java"
+   ]
+  },
+  {
+   "name": "Viernes09092022",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/Viernes09092022",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2022-09-13T18:50:17Z",
+   "language": "Java",
+   "color": "#b07219",
+   "languages": [
+    "Java"
+   ]
+  },
+  {
+   "name": "Lunes05092022",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/Lunes05092022",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2022-09-05T23:56:21Z",
+   "language": "Java",
+   "color": "#b07219",
+   "languages": [
+    "Java"
+   ]
+  },
+  {
+   "name": "Viernes02092022",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/Viernes02092022",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2022-09-03T00:04:12Z",
+   "language": "Java",
+   "color": "#b07219",
+   "languages": [
+    "Java"
+   ]
+  },
+  {
+   "name": "Vierness260822",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/Vierness260822",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2022-09-02T22:22:40Z",
+   "language": "Java",
+   "color": "#b07219",
+   "languages": [
+    "Java"
+   ]
+  },
+  {
+   "name": "Miercoles31082022",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/Miercoles31082022",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2022-08-31T23:56:53Z",
+   "language": "Java",
+   "color": "#b07219",
+   "languages": [
+    "Java"
+   ]
+  },
+  {
+   "name": "Lunes290822",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/Lunes290822",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2022-08-29T23:45:03Z",
+   "language": "Java",
+   "color": "#b07219",
+   "languages": [
+    "Java"
+   ]
+  },
+  {
+   "name": "Lunes220822",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/Lunes220822",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2022-08-26T02:03:16Z",
+   "language": "Java",
+   "color": "#b07219",
+   "languages": [
+    "Java"
+   ]
+  },
+  {
+   "name": "Miercoles240822",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/Miercoles240822",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2022-08-24T23:59:35Z",
+   "language": "Java",
+   "color": "#b07219",
+   "languages": [
+    "Java"
+   ]
+  },
+  {
+   "name": "Viernes190822",
+   "description": null,
+   "url": "https://github.com/ChristopherMendoz/Viernes190822",
+   "stars": 0,
+   "forks": 0,
+   "pushed": "2022-08-19T23:47:31Z",
+   "language": null,
+   "color": null,
+   "languages": []
+  }
+ ],
+ "collabs": {
+  "includes_private": false,
+  "since": "2022-07-06",
+  "public": [
+   {
+    "name": "DataNexus",
+    "full_name": "InahJoer/DataNexus",
+    "url": "https://github.com/InahJoer/DataNexus",
+    "description": "Sistema de gestion empresarial",
+    "stars": 0,
+    "forks": 0,
+    "language": "TypeScript",
+    "color": "#3178c6",
+    "owner": {
+     "login": "InahJoer",
+     "avatar": "https://avatars.githubusercontent.com/u/110624521?u=155b1c781b1f51e01972bd6776cf36a8d89359e9&v=4",
+     "url": "https://github.com/InahJoer",
+     "type": "user"
+    },
+    "commits": 70,
+    "prs": 20,
+    "reviews": 16,
+    "issues": 0,
+    "first": "2026-10-11",
+    "last": "2026-11-13"
+   },
+   {
+    "name": "erp-novahub",
+    "full_name": "pubnicaragua/erp-novahub",
+    "url": "https://github.com/pubnicaragua/erp-novahub",
+    "description": null,
+    "stars": 0,
+    "forks": 0,
+    "language": "TypeScript",
+    "color": "#3178c6",
+    "owner": {
+     "login": "pubnicaragua",
+     "avatar": "https://avatars.githubusercontent.com/u/192803086?v=4",
+     "url": "https://github.com/pubnicaragua",
+     "type": "user"
+    },
+    "commits": 80,
+    "prs": 0,
+    "reviews": 0,
+    "issues": 0,
+    "first": "2026-08-04",
+    "last": "2026-09-24"
+   },
+   {
+    "name": "ProyectoVeterinaria",
+    "full_name": "kepalcast/ProyectoVeterinaria",
+    "url": "https://github.com/kepalcast/ProyectoVeterinaria",
+    "description": null,
+    "stars": 0,
+    "forks": 0,
+    "language": "C#",
+    "color": "#7355dd",
+    "owner": {
+     "login": "kepalcast",
+     "avatar": "https://avatars.githubusercontent.com/u/110624665?v=4",
+     "url": "https://github.com/kepalcast",
+     "type": "user"
+    },
+    "commits": 5,
+    "prs": 0,
+    "reviews": 0,
+    "issues": 0,
+    "first": "2023-06-08",
+    "last": "2023-06-19"
+   },
+   {
+    "name": "wfjoidfjokm",
+    "full_name": "OwenEspinoza11/wfjoidfjokm",
+    "url": "https://github.com/OwenEspinoza11/wfjoidfjokm",
+    "description": null,
+    "stars": 0,
+    "forks": 0,
+    "language": "C#",
+    "color": "#7355dd",
+    "owner": {
+     "login": "OwenEspinoza11",
+     "avatar": "https://avatars.githubusercontent.com/u/110624917?u=920fbd7773554de95cb26e3d402ee068b645173b&v=4",
+     "url": "https://github.com/OwenEspinoza11",
+     "type": "user"
+    },
+    "commits": 2,
+    "prs": 0,
+    "reviews": 0,
+    "issues": 0,
+    "first": "2023-04-23",
+    "last": "2023-04-26"
+   },
+   {
+    "name": "Sistema_Financiero",
+    "full_name": "repo-dev1/Sistema_Financiero",
+    "url": "https://github.com/repo-dev1/Sistema_Financiero",
+    "description": "Sistema financiero para el calculo y comparacion de razones financieras empresariales nicaragua",
+    "stars": 0,
+    "forks": 0,
+    "language": "HTML",
+    "color": "#e34c26",
+    "owner": {
+     "login": "repo-dev1",
+     "avatar": "https://avatars.githubusercontent.com/u/110619727?u=d80ba3be58e89f15c4d4b7aec05a4005c8269fc6&v=4",
+     "url": "https://github.com/repo-dev1",
+     "type": "user"
+    },
+    "commits": 1,
+    "prs": 0,
+    "reviews": 0,
+    "issues": 0,
+    "first": "2025-11-22",
+    "last": "2025-11-22"
+   }
+  ],
+  "private": [],
+  "restricted": 1370,
+  "totals": {
+   "repos": 5,
+   "public_repos": 5,
+   "private_repos": 0,
+   "owners": 5,
+   "commits": 158,
+   "prs": 20,
+   "reviews": 16,
+   "issues": 0
+  }
+ }
+}
